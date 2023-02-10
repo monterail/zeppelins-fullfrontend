@@ -5,6 +5,15 @@ Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introdu
 
 ## Setup
 
+We use [asdf](https://asdf-vm.com/) to set up the local machine faster, and install dependencies like node.
+example of asdf setup:
+
+```bash
+brew install asdf
+asdf plugin-add nodejs
+asdf install
+```
+
 Make sure to install the dependencies:
 
 ```bash
