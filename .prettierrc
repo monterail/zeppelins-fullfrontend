@@ -3,5 +3,6 @@
   "semi": true,
   "bracketSameLine": false,
   "tabWidth": 2,
-  "trailingComma": "all"
+  "trailingComma": "all",
+  "singleAttributePerLine": true
 }
