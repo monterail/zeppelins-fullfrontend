@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { RouteLocationRaw } from 'vue-router';
+// ! fix type declaration and loading
 import ArrowLeft from '~/src/assets/icons/arrow-left.svg?component';
 import ArrowRight from '~/src/assets/icons/arrow-right.svg?component';
 
