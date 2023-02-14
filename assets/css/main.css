@@ -3,58 +3,58 @@
 *,
 *::before,
 *::after {
-    box-sizing: inherit;
-    margin: 0;
-    padding: 0;
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
 
 html {
-    font-family: 'Inter', sans-serif;
-    box-sizing: border-box;
-    height: 100%;
-    font-size: 62.5%;
-    -mox-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    font-smoothing: antialised;
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+  height: 100%;
+  font-size: 62.5%;
+  -mox-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialised;
 }
 
 body {
-    height: 100%;
-    font-size: 1.6rem;
-    line-height: 1.5;
+  height: 100%;
+  font-size: 1.6rem;
+  line-height: 1.5;
 }
 
 #app {
-    height: 100%;
-    position: relative;
+  height: 100%;
+  position: relative;
 }
 
 h1 {
-    font-size: 3.2rem;
-    font-weight: 500;
+  font-size: 3.2rem;
+  font-weight: 500;
 }
 
 h2 {
-    font-size: 2.8rem;
-    font-weight: 600;
+  font-size: 2.8rem;
+  font-weight: 600;
 }
 
 h3 {
-    font-size: 2.4rem;
-    font-weight: 500;
+  font-size: 2.4rem;
+  font-weight: 500;
 }
 
 h4 {
-    font-size: 1.8rem;
-    font-weight: 500;
+  font-size: 1.8rem;
+  font-weight: 500;
 }
 
 h5 {
-    font-size: 1.6rem;
-    font-weight: 500;
+  font-size: 1.6rem;
+  font-weight: 500;
 }
 
 button {
-    font-size: 1.4rem;
-    font-weight: 500;
+  font-size: 1.4rem;
+  font-weight: 500;
 }
