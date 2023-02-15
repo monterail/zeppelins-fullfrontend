@@ -1,6 +1,6 @@
 <template>
   <footer class="w-full bg-gray-100 pt-14">
-    <div class="w-[1024px] mx-auto">
+    <div class="w-max-content-w mx-auto">
       <div class="grid grid-cols-4 mb-16 w-full">
         <div>
           <p class="mb-5">Follow us</p>

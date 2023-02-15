@@ -1,6 +1,4 @@
 <template>
-  <main>
-    <h1>Home</h1>
-    <p>Home page</p>
-  </main>
+  <h1>Home</h1>
+  <p>Home page</p>
 </template>
