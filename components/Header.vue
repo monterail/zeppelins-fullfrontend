@@ -1,12 +1,14 @@
 <template>
   <header class="w-full">
     <div class="w-max-content-w flex items-center relative h-12 mx-auto">
-      <img
-        src="/zeppy-logo.png"
-        alt="Zappy Logo"
-        width="111"
-        class="mx-auto"
-      />
+      <nuxt-link to="/">
+        <img
+          src="/zeppy-logo.png"
+          alt="Zappy Logo"
+          width="111"
+          class="mx-auto"
+        />
+      </nuxt-link>
       <nuxt-link
         :to="'#'"
         class="ml-auto absolute right-0 top-1/2 transition-transform -translate-y-1/2 hover:font-bold"
