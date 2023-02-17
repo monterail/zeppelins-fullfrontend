@@ -24,9 +24,9 @@
           <span>
             {{ cta.title }}
           </span>
-          <ArrowRightIcon
-            class="ml-2"
-            :icon-color="cta.isButton ? 'white' : 'black'"
+          <ArrowIcon
+            class="ml-2 rotate-180 w-6"
+            :class="cta.isButton ? 'fill-white' : 'fill-black'"
           />
         </nuxt-link>
       </div>
@@ -35,7 +35,7 @@
 </template>
 
 <script lang="ts" setup>
-import ArrowRightIcon from '~/components/icons/ArrowRightIcon.vue';
+import ArrowIcon from '@/assets/icons/arrow_thin_left.svg?skipsvgo';
 
 defineProps<{
   backgroundImage: {
