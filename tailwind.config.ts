@@ -22,5 +22,10 @@ export default <Partial<Config>>{
       'gray-500': '#82828B',
       black: '#000000',
     },
+    extend: {
+      spacing: {
+        'max-content-w': '1160px',
+      },
+    },
   },
 };
