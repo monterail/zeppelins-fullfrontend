@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { RouteLocationRaw } from 'vue-router';
-// ! fix type declaration and loading
-import ArrowLeft from '~/src/assets/icons/arrow-left.svg?component';
-import ArrowRight from '~/src/assets/icons/arrow-right.svg?component';
+import ArrowLeft from '~/src/assets/icons/arrow-left.svg?skipsvgo';
+import ArrowRight from '~/src/assets/icons/arrow-right.svg?skipsvgo';
 
 const props = withDefaults(
   defineProps<{
@@ -24,19 +23,21 @@ const props = withDefaults(
 
 const componentType = computed(() => {
   if (props.href) return 'a';
-  if (props.to) return 'RouterLink';
+  if (props.to) return 'NuxtLink';
   return 'button';
 });
 
-const iconFill = computed(() => {
-  if (props.variant === 'outline') return 'icon-fill-dark';
-  return null;
-});
-
 const buttonClasses = computed(() => {
-  if (componentType.value === 'a' || componentType.value === 'RouterLink')
+  if (componentType.value === 'a' || componentType.value === 'NuxtLink')
     return 'link';
   return ['button', `button--${props.variant}`, `button--${props.type}`];
+});
+
+const iconFill = computed(() => {
+  return [
+    'arrow-icon',
+    props.variant === 'outline' ? 'fill-black' : 'fill-white',
+  ];
 });
 </script>
 
@@ -79,7 +80,15 @@ const buttonClasses = computed(() => {
   border-color: #595cff;
 }
 
-.icon-fill-dark path {
+.fill-black ::v-deep path {
   fill: black;
+}
+
+.fill-white ::v-deep path {
+  fill: white;
+}
+.arrow-icon {
+  width: 20px;
+  height: 9px;
 }
 </style>
