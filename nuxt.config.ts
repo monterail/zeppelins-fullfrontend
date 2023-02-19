@@ -10,5 +10,8 @@ export default defineNuxtConfig({
   vite: {
     plugins: [svgLoader()],
   },
-  modules: ['nuxt-headlessui'],
+  modules: ['@nuxtjs/tailwindcss'],
+  vite: {
+    plugins: [svgLoader()],
+  },
 });
