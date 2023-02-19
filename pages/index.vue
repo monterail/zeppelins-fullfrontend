@@ -4,14 +4,14 @@
       link="/"
       header="Best zeppelins"
       subheader="Lowest prices"
-      :backgroundImage="backgroundImage"
+      :background-image="backgroundImage"
       :cta="{ title: 'Check out our flying boys', href: '#', isButton: true }"
       class="col-span-2 h-56"
     />
     <RedirectionBanner
       link="/"
       header="Company with decades of history"
-      :backgroundImage="backgroundImage"
+      :background-image="backgroundImage"
       transparent-background
       :cta="{ title: 'Read more', href: '#' }"
       class="col-span-1 h-56"
@@ -19,15 +19,20 @@
     <RedirectionBanner
       link="/"
       header="Need help?"
-      :backgroundImage="backgroundImage"
+      :background-image="backgroundImage"
       transparent-background
       :cta="{ title: 'Contact us', href: '#' }"
       class="col-span-1 h-56"
     />
   </div>
+  <div>
+    <BaseButton>Tets</BaseButton>
+  </div>
 </template>
 
 <script lang="ts" setup>
+import BaseButton from '~/src/components/base/Button.vue';
+
 const backgroundImage = {
   path: 'https://imgs.smoothradio.com/images/191589?width=1200&crop=16_9&signature=GRazrMVlAISqkcXrrNA6ku356R0=',
   alt: 'Zeppelin image',

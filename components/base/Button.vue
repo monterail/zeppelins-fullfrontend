@@ -45,6 +45,7 @@ const iconFill = computed(() => {
   <component
     :is="componentType"
     :class="buttonClasses"
+    class="py-14 px-28 rounded border-1 border-solid text-sm font-medium"
     :href="props.href"
     :to="props.to"
   >
@@ -61,13 +62,13 @@ const iconFill = computed(() => {
 </template>
 
 <style scoped>
-.button {
-  padding: 14px 28px;
-  border-radius: 4px;
-  border: 1px solid transparent;
-  font: 14px Inter, sans-serif;
-  font-weight: 500;
-}
+/* .button { */
+/*   padding: 14px 28px; */
+/*   border-radius: 4px; */
+/*   border: 1px solid transparent; */
+/*   font: 14px Inter, sans-serif; */
+/*   font-weight: 500; */
+/* } */
 
 .button--fill {
   background: #595cff;
