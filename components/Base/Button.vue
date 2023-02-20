@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { RouteLocationRaw } from 'vue-router';
-import ArrowLeft from '~/src/assets/icons/arrow-left.svg?skipsvgo';
-import ArrowRight from '~/src/assets/icons/arrow-right.svg?skipsvgo';
+import ArrowLeft from '~/assets/icons/arrow-left.svg?skipsvgo';
+import ArrowRight from '~/assets/icons/arrow-right.svg?skipsvgo';
 
 const props = withDefaults(
   defineProps<{
     variant?: 'fill' | 'outline';
-    type?: 'regular' | 'icon-round' | 'icon-sqaure';
+    type?: 'regular' | 'round' | 'sqaure';
     to?: RouteLocationRaw | null;
     href?: string | null;
     arrow?: null | 'right' | 'left';
@@ -45,7 +45,7 @@ const iconFill = computed(() => {
   <component
     :is="componentType"
     :class="buttonClasses"
-    class="py-14 px-28 rounded border-1 border-solid text-sm font-medium"
+    class="py-3.5 px-7 rounded border-1 border-solid text-sm font-medium hover:bg-gray-200"
     :href="props.href"
     :to="props.to"
   >
@@ -62,30 +62,30 @@ const iconFill = computed(() => {
 </template>
 
 <style scoped>
-/* .button { */
-/*   padding: 14px 28px; */
-/*   border-radius: 4px; */
-/*   border: 1px solid transparent; */
-/*   font: 14px Inter, sans-serif; */
-/*   font-weight: 500; */
-/* } */
-
 .button--fill {
-  background: #595cff;
-  border: 1px solid #595cff;
-  color: white;
+  @apply bg-blue-200 text-white border border-solid border-blue-200 hover:bg-blue-300;
 }
 
 .button--outline {
-  background: transparent;
-  border-color: #595cff;
+  @apply border border-solid border-blue-200;
 }
 
-.fill-black ::v-deep path {
+.button--square,
+.button--round {
+  @apply p-0;
+  width: 46px;
+  height: 46px;
+}
+
+.button--round {
+  @apply rounded-full;
+}
+
+.fill-black :deep(path) {
   fill: black;
 }
 
-.fill-white ::v-deep path {
+.fill-white :deep(path) {
   fill: white;
 }
 .arrow-icon {

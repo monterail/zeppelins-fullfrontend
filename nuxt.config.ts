@@ -11,7 +11,4 @@ export default defineNuxtConfig({
     plugins: [svgLoader()],
   },
   modules: ['@nuxtjs/tailwindcss'],
-  vite: {
-    plugins: [svgLoader()],
-  },
 });
