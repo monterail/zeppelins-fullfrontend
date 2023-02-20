@@ -27,8 +27,10 @@ export const getProductById = async (id: number) => {
 export const postProduct = async (payload: Product | Product[]) => {
   let load = null;
   Array.isArray(payload) ? (load = payload) : (load = new Array(payload));
+  console.log(load);
   try {
     const { data } = await zeppelinsDb.from('products').insert(load);
+    console.log(data);
     return data;
   } catch (err) {
     console.error(err);
@@ -36,7 +38,7 @@ export const postProduct = async (payload: Product | Product[]) => {
 };
 
 // TODO: include nadling of product_scpeficiation in this step
-export const updateProduct = async (id: number, paylaod: Product) => {
+export const updateProduct = async (paylaod: Partial<Product>, id: number) => {
   try {
     const { data } = await zeppelinsDb
       .from('products')

@@ -4,11 +4,11 @@ export interface Product {
   image?: string | null;
   name?: string | null;
   price?: number | null;
-  product_id: number;
+  product_id?: number;
 }
 
 export interface ProductSpecifications {
-  product_id: number;
+  product_id?: number;
   range?: number | null;
 }
 
