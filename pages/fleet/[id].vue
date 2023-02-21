@@ -17,6 +17,13 @@
         <button class="bg-blue-200 text-white px-5 py-2 rounded-md">
           Book
         </button>
+        <BaseList
+          v-for="item in listData"
+          :key="item.title"
+          :title="item.title"
+          :long-text="item.longText"
+          class="mt-12"
+        />
       </div>
       <div>social stuff</div>
     </div>
@@ -33,4 +40,11 @@ const zeppelin: ZeppelinTile = {
   lowestPrice: 213,
   name: 'Name',
 };
+
+const listData = [
+  { title: 'Title', longText: 'Blah blah blah blah' },
+  { title: 'Title', longText: 'Blah blah blah blah' },
+  { title: 'Title', longText: 'Blah blah blah blah' },
+  { title: 'Title', longText: 'Blah blah blah blah' },
+];
 </script>
