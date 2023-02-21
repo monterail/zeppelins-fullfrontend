@@ -7,7 +7,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint --ext .ts,.js,.vue .",
-    "typecheck": "nuxi typecheck",
+    "typecheck": "nuxt typecheck",
     "types:get": "npx supabase gen types typescript --project-id hscidcpphgemdlaynpic --schema public > types/generated-types.ts"
   },
   "devDependencies": {
