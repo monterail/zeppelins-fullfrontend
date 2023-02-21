@@ -4,14 +4,14 @@
       link="/"
       header="Best zeppelins"
       subheader="Lowest prices"
-      :backgroundImage="backgroundImage"
+      :background-image="backgroundImage"
       :cta="{ title: 'Check out our flying boys', href: '#', isButton: true }"
       class="col-span-2 h-56"
     />
     <RedirectionBanner
       link="/"
       header="Company with decades of history"
-      :backgroundImage="backgroundImage"
+      :background-image="backgroundImage"
       transparent-background
       :cta="{ title: 'Read more', href: '#' }"
       class="col-span-1 h-56"
@@ -19,12 +19,13 @@
     <RedirectionBanner
       link="/"
       header="Need help?"
-      :backgroundImage="backgroundImage"
+      :background-image="backgroundImage"
       transparent-background
       :cta="{ title: 'Contact us', href: '#' }"
       class="col-span-1 h-56"
     />
   </div>
+  <HomePopular />
 </template>
 
 <script lang="ts" setup>

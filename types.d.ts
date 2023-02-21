@@ -3,9 +3,6 @@
 type ZeppelinTile = {
   id: number | string;
   name: string;
-  lowestPrice: number;
-  image: {
-    path: string;
-    alt: string;
-  };
+  price: number;
+  image: string;
 };

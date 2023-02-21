@@ -1,12 +1,12 @@
 <template>
   <nuxt-link
     class="group block hover:shadow-2 hover:bg-white transition-all duration-200"
-    :to="`/fleet/${zeppelin.id}`"
+    :to="`/fleet/${zeppelin.product_id}`"
   >
     <img
       class="rounded w-[260px] h-[260px] object-cover"
-      :src="zeppelin.image.path"
-      :alt="zeppelin.image.alt"
+      :src="zeppelin.image || ''"
+      :alt="zeppelin.name || ''"
       :loading="lazyImage ? 'lazy' : 'eager'"
     />
     <div class="relative pt-5 px-2.5 pb-9 text-black font-medium">
@@ -14,7 +14,7 @@
         {{ zeppelin.name }}
       </div>
       <div class="text-sm leading-4">
-        From <strong>${{ zeppelin.lowestPrice }}</strong>
+        From <strong>${{ zeppelin.price }}</strong>
       </div>
 
       <div
@@ -28,9 +28,10 @@
 
 <script setup lang="ts">
 import Arrow from '@/assets/icons/arrow_thin_left.svg?skipsvgo';
+import { FullProduct } from '~/types/products';
 
 defineProps<{
-  zeppelin: ZeppelinTile;
+  zeppelin: FullProduct;
   lazyImage?: boolean;
 }>();
 </script>

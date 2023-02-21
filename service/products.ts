@@ -1,12 +1,20 @@
 import { zeppelinsDb } from '~/api/zeppelinsDb';
 import { Product } from '~/types/products';
 
-export const getProductList = async () => {
+export const getProductList = async (count?: number) => {
   try {
-    const { data } = await zeppelinsDb
-      .from('products')
-      .select('*, product_specifications (range)');
-    return data;
+    if (count) {
+      const { data } = await zeppelinsDb
+        .from('products')
+        .select('*, product_specifications (range)')
+        .limit(count);
+      return data;
+    } else {
+      const { data } = await zeppelinsDb
+        .from('products')
+        .select('*, product_specifications (range)');
+      return data;
+    }
   } catch (err) {
     console.error(err);
   }
