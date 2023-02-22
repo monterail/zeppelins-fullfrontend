@@ -1,10 +1,10 @@
 <template>
   <Disclosure v-slot="{ open }">
-    <div
+    <li
       class="flex justify-between h-14 w-full border-b border-solid border-b-gray-200"
     >
       <DisclosureButton
-        class="w-full text-sm font-normal leading-normal flex justify-between items-center"
+        class="w-full text-sm font-normal leading-normal flex justify-between"
       >
         {{ info.title }}
         <PlusIcon
@@ -16,7 +16,7 @@
           class="inline-block"
         />
       </DisclosureButton>
-    </div>
+    </li>
     <DisclosurePanel class="text-xs mt-3">
       {{ info.description }}
     </DisclosurePanel>

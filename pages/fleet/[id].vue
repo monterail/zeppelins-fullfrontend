@@ -17,7 +17,7 @@
         </h2>
         <hr class="border-gray-300 border mb-5" />
         <p class="mb-5">
-          Description of this fantastic flying boi. It’s a great one!
+          {{ zeppelin.description }}
         </p>
         <button class="bg-blue-200 text-white px-5 py-2 rounded-md mb-14">
           Book
@@ -26,18 +26,19 @@
           v-for="item in listData"
           :key="item.id"
           :info="item"
+          as="ul"
         />
       </div>
-      <div class="flex">
-        <div
+      <ul class="flex">
+        <li
           v-for="perk in perks"
           :key="perk.id"
-          class="w-1/3 flex justify-between align-middle gap-7"
+          class="w-1/3 flex justify-between items-center gap-7"
         >
           <component :is="perk.icon"></component>
           <p class="text-xs my-auto">{{ perk.description }}</p>
-        </div>
-      </div>
+        </li>
+      </ul>
     </div>
     <ProductsList
       title="Others from our fleet"
@@ -66,6 +67,7 @@ const zeppelin: ZeppelinTile = {
   },
   lowestPrice: 213,
   name: 'Screeming Firehawk',
+  description: 'Some nice description to come',
 };
 
 const zeppelins: ZeppelinTile[] = [
@@ -120,5 +122,4 @@ const listData = [
     description: 'Test foo bar.\nLong descriptive text.',
   },
 ];
-
 </script>
