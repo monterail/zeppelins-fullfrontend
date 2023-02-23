@@ -24,6 +24,7 @@
 </template>
 
 <script setup lang="ts">
+import { FullProduct } from '~/types/products';
 import ArrowIcon from '@/assets/icons/arrow_thin_left.svg?skipsvgo';
 import { FullProduct } from '~/types/products';
 

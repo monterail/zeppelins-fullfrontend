@@ -24,7 +24,6 @@
       :cta="{ title: 'Contact us', href: '#' }"
       class="col-span-1 h-56"
     />
-
     <ProductsList
       v-if="zeppelins"
       class="col-span-2 mt-14"
