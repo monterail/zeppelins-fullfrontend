@@ -33,7 +33,7 @@
         <li
           v-for="perk in perks"
           :key="perk.id"
-          class="w-1/3 flex justify-between items-center gap-7"
+          class="w-1/3 flex items-center gap-2"
         >
           <component :is="perk.icon"></component>
           <p class="text-xs my-auto">{{ perk.description }}</p>
