@@ -14,6 +14,14 @@ asdf plugin-add nodejs
 asdf install
 ```
 
+We use Yarn v3.4.1. If you use another version of yarn type:
+
+```bash
+corepack enable
+```
+
+More details [here](https://yarnpkg.com/getting-started/install).
+
 Make sure to install the dependencies:
 
 ```bash

@@ -8,8 +8,11 @@ export default defineNuxtConfig({
   typescript: {
     typeCheck: true,
   },
-  modules: ['@nuxtjs/tailwindcss'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/supabase'],
   vite: {
     plugins: [svgLoader()],
+  },
+  imports: {
+    dirs: ['composables/api/**'],
   },
 });
