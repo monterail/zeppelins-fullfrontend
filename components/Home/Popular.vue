@@ -5,7 +5,10 @@
       <a href="/fleet">See more -></a>
     </div>
     <div class="flex gap-10">
+      <div v-if="isLoading">loading...</div>
+      <div v-else-if="isError">error...</div>
       <ProductTile
+        v-else-if="mostPopular"
         v-for="zep in mostPopular"
         :key="zep.product_id"
         :zeppelin="zep"
@@ -16,10 +19,5 @@
 </template>
 
 <script lang="ts" setup>
-import { getProductList } from '~/service/products';
-
-const mostPopular = ref();
-onMounted(async () => {
-  mostPopular.value = await getProductList(4);
-});
+const { data: mostPopular, isLoading, isError } = useProductList(4)
 </script>
