@@ -8,4 +8,5 @@ type ZeppelinTile = {
     path: string;
     alt: string;
   };
+  description: string;
 };

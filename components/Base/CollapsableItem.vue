@@ -1,23 +1,19 @@
 <template>
   <Disclosure v-slot="{ open }">
-    <li
-      class="flex justify-between h-14 w-full border-b border-solid border-b-gray-200"
+    <DisclosureButton
+      class="h-14 w-full border-b border-solid border-b-gray-200 text-sm font-normal leading-normal flex justify-between items-center"
     >
-      <DisclosureButton
-        class="w-full text-sm font-normal leading-normal flex justify-between"
-      >
-        {{ info.title }}
-        <PlusIcon
-          v-show="!open"
-          class="inline-block"
-        />
-        <MinusIcon
-          v-show="open"
-          class="inline-block"
-        />
-      </DisclosureButton>
-    </li>
-    <DisclosurePanel class="text-xs mt-3">
+      {{ info.title }}
+      <PlusIcon
+        v-show="!open"
+        class="inline-block"
+      />
+      <MinusIcon
+        v-show="open"
+        class="inline-block"
+      />
+    </DisclosureButton>
+    <DisclosurePanel class="text-xs mt-3 mb-3">
       {{ info.description }}
     </DisclosurePanel>
   </Disclosure>

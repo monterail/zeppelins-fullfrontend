@@ -22,13 +22,18 @@
         <button class="bg-blue-200 text-white px-5 py-2 rounded-md mb-14">
           Book
         </button>
-        <BaseCollapsableItem
-          v-for="item in listData"
-          :key="item.id"
-          :info="item"
-          as="ul"
-        />
+        <ul>
+          <li>
+            <BaseCollapsableItem
+              v-for="item in listData"
+              :key="item.id"
+              :info="item"
+            />
+          </li>
+        </ul>
+
       </div>
+      
       <ul class="flex">
         <li
           v-for="perk in perks"
@@ -79,6 +84,7 @@ const zeppelins: ZeppelinTile[] = [
     },
     lowestPrice: 112,
     name: 'Firehawk',
+    description: 'Some nice description to come',
   },
   {
     id: 2,
@@ -88,6 +94,7 @@ const zeppelins: ZeppelinTile[] = [
     },
     lowestPrice: 487,
     name: 'Doomsday Glory',
+    description: 'Some nice description to come',
   },
   {
     id: 3,
@@ -97,6 +104,7 @@ const zeppelins: ZeppelinTile[] = [
     },
     lowestPrice: 754,
     name: 'Keisers Revenge',
+    description: 'Some nice description to come',
   },
   {
     id: 4,
@@ -106,6 +114,7 @@ const zeppelins: ZeppelinTile[] = [
     },
     lowestPrice: 217,
     name: 'Flying Alamo',
+    description: 'Some nice description to come',
   },
 ];
 
