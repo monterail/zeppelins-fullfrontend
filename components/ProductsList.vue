@@ -15,7 +15,7 @@
     <ul class="flex gap-10">
       <li
         v-for="zeppelin in zeppelins"
-        :key="zeppelin.id"
+        :key="zeppelin.product_id"
       >
         <ProductTile :zeppelin="zeppelin" />
       </li>
@@ -25,10 +25,11 @@
 
 <script setup lang="ts">
 import ArrowIcon from '@/assets/icons/arrow_thin_left.svg?skipsvgo';
+import { FullProduct } from '~/types/products';
 
 defineProps<{
   title: string;
-  zeppelins: ZeppelinTile[];
+  zeppelins: FullProduct[];
 }>();
 </script>
 

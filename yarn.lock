@@ -745,6 +745,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@headlessui/vue@npm:^1.0.0":
+  version: 1.7.10
+  resolution: "@headlessui/vue@npm:1.7.10"
+  peerDependencies:
+    vue: ^3.2.0
+  checksum: 9e30994a4dedfa80d3448b315a75405355480ef33d8f4df216d3f8b86527208b9542b8f2a98b8c70112de8740cc5068756b5ece8432be30c66f37d0f39a34cef
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.11.8":
   version: 0.11.8
   resolution: "@humanwhocodes/config-array@npm:0.11.8"
@@ -960,7 +969,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt/kit@npm:^3.1.2, @nuxt/kit@npm:^3.2.0":
+"@nuxt/kit@npm:^3.0.0, @nuxt/kit@npm:^3.1.2, @nuxt/kit@npm:^3.2.0":
   version: 3.2.2
   resolution: "@nuxt/kit@npm:3.2.2"
   dependencies:
@@ -6875,6 +6884,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nuxt-headlessui@npm:1.1.1":
+  version: 1.1.1
+  resolution: "nuxt-headlessui@npm:1.1.1"
+  dependencies:
+    "@headlessui/vue": ^1.0.0
+    "@nuxt/kit": ^3.0.0
+    pathe: ^1.0.0
+  checksum: a597defb20434800a2912ff21fca41251a48ff3e7292b57640a1ccf875ec32779b323a3917f7e46dbffcfe33d7052b9720b7b1165b3172de9db892cf17a6e2eb
+  languageName: node
+  linkType: hard
+
 "nuxt@npm:3.1.2":
   version: 3.1.2
   resolution: "nuxt@npm:3.1.2"
@@ -8278,6 +8298,7 @@ __metadata:
     eslint-config-prettier: 8.6.0
     eslint-plugin-prettier: 4.2.1
     nuxt: 3.1.2
+    nuxt-headlessui: 1.1.1
     prettier: 2.8.4
     typescript: 4.9.5
     vite-svg-loader: 4.0.0
