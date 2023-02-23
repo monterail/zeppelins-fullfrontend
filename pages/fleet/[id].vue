@@ -22,12 +22,14 @@
         <button class="bg-blue-200 text-white px-5 py-2 rounded-md mb-14">
           Book
         </button>
-        <BaseCollapsableItem
-          v-for="item in listData"
-          :key="item.id"
-          :info="item"
-          as="ul"
-        />
+        <ul>
+          <BaseCollapsableItem
+            v-for="item in listData"
+            :key="item.id"
+            :info="item"
+            as="li"
+          />
+        </ul>
       </div>
       <ul class="flex">
         <li
