@@ -6,7 +6,7 @@
     </div>
     <div class="flex gap-10">
       <div v-if="isLoading">loading...</div>
-      <div v-else-if="isError">error...</div>
+      <div v-else-if="isError">{{ error }}</div>
       <ProductTile
         v-else-if="mostPopular"
         v-for="zep in mostPopular"
@@ -19,5 +19,5 @@
 </template>
 
 <script lang="ts" setup>
-const { data: mostPopular, isLoading, isError } = useProductList(4)
+const { data: mostPopular, isLoading, isError, error } = useProductList(4);
 </script>
