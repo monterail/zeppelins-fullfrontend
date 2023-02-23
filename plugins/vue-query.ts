@@ -1,4 +1,10 @@
-import { VueQueryPlugin, VueQueryPluginOptions, QueryClient, hydrate, dehydrate } from 'vue-query';
+import {
+  VueQueryPlugin,
+  VueQueryPluginOptions,
+  QueryClient,
+  hydrate,
+  dehydrate,
+} from 'vue-query';
 
 export default defineNuxtPlugin((nuxt) => {
   const queryClient = new QueryClient({
