@@ -10,9 +10,9 @@ export const useProductList = (count = Infinity) => {
         .from('products')
         .select('*, product_specifications (range)')
         .limit(count);
-      if (error) throw new Error
+      if (error) throw new Error(error)
       return data
   })
-  
+
   return result
 };
