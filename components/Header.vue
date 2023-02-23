@@ -35,8 +35,8 @@
 
 <script lang="ts" setup>
 const navLinks: Array<{ name: string; href: string }> = [
-  { name: 'Home', href: '#' },
-  { name: 'Fleet', href: '#' },
+  { name: 'Home', href: '/' },
+  { name: 'Fleet', href: '/fleet' },
   { name: 'About us', href: '#' },
   { name: 'Contact us', href: '#' },
 ];
