@@ -31,6 +31,7 @@
       :zeppelins="zeppelins"
     />
   </div>
+  <HomePopular />
 </template>
 
 <script lang="ts" setup>
