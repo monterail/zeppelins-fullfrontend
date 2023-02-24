@@ -15,4 +15,5 @@ export default defineNuxtConfig({
   imports: {
     dirs: ['composables/api/**'],
   },
+  css: ['@/assets/css/directives.css']
 });

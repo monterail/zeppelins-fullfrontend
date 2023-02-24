@@ -1,0 +1,45 @@
+.v-loading {
+  opacity: 0.6;
+  pointer-events: none;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.v-loading::before {
+  content: "";
+  -webkit-animation: loader 0.75s linear;
+  -webkit-animation-iteration-count: infinite;
+  animation: loader 0.75s linear;
+  animation-iteration-count: infinite;
+  border-color: transparent #212529 #212529;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 0.25em;
+  box-shadow: 0 0 0 1px transparent;
+  height: 1.5em;
+  left: 50%;
+  margin: -0.9em 0 0 -0.9em;
+  position: absolute;
+  top: 50%;
+  width: 1.5em;
+  z-index: 5;
+}
+
+.v-loading::after {
+  content: "";
+  background-color: rgba(204, 204, 204, 0.7);
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 4;
+}
+
+@keyframes loader {
+  100% {
+    -webkit-transform: rotate(1turn);
+    transform: rotate(1turn);
+  }
+}
