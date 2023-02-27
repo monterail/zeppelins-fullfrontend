@@ -5,5 +5,5 @@ export default defineNuxtPlugin((nuxtApp) => {
     } else {
       el.classList.remove('v-loading');
     }
-  })
+  });
 });
