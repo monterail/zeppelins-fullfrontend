@@ -6,13 +6,15 @@ import ArrowRight from '~/assets/icons/arrow-right.svg?skipsvgo';
 
 const props = withDefaults(
   defineProps<{
-    variant?: 'fill' | 'outline';
-    type?: 'regular' | 'round' | 'sqaure';
+    cta?: boolean;
+    variant?: 'fill' | 'outline' | 'featured-link';
+    type?: 'regular' | 'round' | 'square';
     to?: RouteLocationRaw | null;
     href?: string | null;
     arrow?: null | 'right' | 'left';
   }>(),
   {
+    cta: true,
     variant: 'fill',
     type: 'regular',
     to: null,
@@ -27,16 +29,40 @@ const componentType = computed(() => {
   return 'button';
 });
 
-const buttonClasses = computed(() => {
-  if (componentType.value === 'a' || componentType.value === 'NuxtLink')
-    return 'link';
-  return ['button', `button--${props.variant}`, `button--${props.type}`];
+const styleClasses = computed(() => {
+  return props.cta
+    ? [
+        'transition duration-150',
+        props.type === 'regular'
+          ? 'inline-flex items-center gap-x-3 py-3.5 px-7 rounded border-1 border-solid text-sm font-medium hover:bg-gray-200'
+          : null,
+        props.type === 'round'
+          ? 'inline-block border-1 border-solid w-[50px] h-[50px] rounded-full'
+          : null,
+        props.type === 'square'
+          ? 'inline-block w-[50px] h-[50px] border-1 border-solid rounded'
+          : null,
+        props.variant === 'fill'
+          ? 'bg-blue-200 text-white border border-solid border-blue-200 hover:bg-blue-300'
+          : null,
+        props.variant === 'outline'
+          ? 'border border-solid border-blue-200'
+          : null,
+      ]
+    : [
+        'text-sm hover:underline transition duration-150',
+        props.variant === 'featured-link'
+          ? 'inline-flex items-center gap-x-3 whitespace-nowrap font-medium border-b-1 border-transparent hover:border-black :hover:no-underline'
+          : null,
+      ];
 });
 
-const iconFill = computed(() => {
+const arrowStyles = computed(() => {
   return [
-    'arrow-icon',
-    props.variant === 'outline' ? 'fill-black' : 'fill-white',
+    'w-[20px] h-[9px]',
+    props.variant === 'outline' || props.variant === 'featured-link'
+      ? 'fill-black'
+      : 'fill-white',
   ];
 });
 </script>
@@ -44,52 +70,18 @@ const iconFill = computed(() => {
 <template>
   <component
     :is="componentType"
-    :class="buttonClasses"
-    class="py-3.5 px-7 rounded border-1 border-solid text-sm font-medium hover:bg-gray-200"
+    :class="styleClasses"
     :href="props.href"
     :to="props.to"
   >
     <ArrowLeft
       v-if="props.arrow === 'left'"
-      :class="iconFill"
+      :class="arrowStyles"
     />
     <slot />
     <ArrowRight
       v-if="props.arrow === 'right'"
-      :class="iconFill"
+      :class="arrowStyles"
     />
   </component>
 </template>
-
-<style scoped>
-.button--fill {
-  @apply bg-blue-200 text-white border border-solid border-blue-200 hover:bg-blue-300;
-}
-
-.button--outline {
-  @apply border border-solid border-blue-200;
-}
-
-.button--square,
-.button--round {
-  @apply p-0;
-  width: 46px;
-  height: 46px;
-}
-
-.button--round {
-  @apply rounded-full;
-}
-
-.fill-black :deep(path) {
-  fill: black;
-}
-
-.fill-white :deep(path) {
-  fill: white;
-}
-.arrow-icon {
-  width: 20px;
-  height: 9px;
-}
-</style>

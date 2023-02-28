@@ -31,6 +31,31 @@
       :zeppelins="zeppelins"
     />
   </div>
+  <div class="flex gap-3">
+    <BaseButton
+      :cta="true"
+      arrow="right"
+      variant="outline"
+      >Test</BaseButton
+    >
+    <BaseButton
+      :cta="true"
+      type="square"
+      >A</BaseButton
+    >
+    <BaseButton
+      :cta="false"
+      href="/"
+      >Link</BaseButton
+    >
+    <BaseButton
+      :cta="false"
+      variant="featured-link"
+      arrow="right"
+      href="/"
+      >Link</BaseButton
+    >
+  </div>
 </template>
 
 <script lang="ts" setup>
