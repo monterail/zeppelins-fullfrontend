@@ -52,7 +52,7 @@ const styleClasses = computed(() => {
     : [
         'text-sm hover:underline transition duration-150',
         props.variant === 'featured-link'
-          ? 'inline-flex items-center gap-x-3 whitespace-nowrap font-medium border-b-1 border-transparent hover:border-black :hover:no-underline'
+          ? 'inline-flex items-center gap-x-3 whitespace-nowrap font-medium'
           : null,
       ];
 });
