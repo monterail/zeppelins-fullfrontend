@@ -3,7 +3,5 @@
 }
 
 .v-loading::after {
-  @apply content-[''] absolute z-20 w-4 h-4 border-2 rounded-full animate-[spin_600ms_linear_infinite] border-black border-t-transparent;
-  top: calc(50% - 8px);
-  left: calc(50% - 8px);
+  @apply content-[''] absolute top-1/2 left-1/2 -mt-2 -ml-2 z-20 w-4 h-4 border-2 rounded-full animate-[spin_600ms_linear_infinite] border-black border-t-transparent;
 }
