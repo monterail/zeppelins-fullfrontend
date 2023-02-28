@@ -6,22 +6,28 @@ import ArrowRight from '~/assets/icons/arrow-right.svg?skipsvgo';
 
 const props = withDefaults(
   defineProps<{
-    cta?: boolean;
-    variant?: 'fill' | 'outline' | 'featured-link';
-    type?: 'regular' | 'round' | 'square';
+    variant?:
+      | 'fill'
+      | 'outline'
+      | 'text'
+      | 'featured-link'
+      | 'icon-square'
+      | 'icon-round';
+    size?: 'medium' | 'big' | 'round' | 'square';
     to?: RouteLocationRaw | null;
     href?: string | null;
     arrow?: null | 'right' | 'left';
   }>(),
   {
-    cta: true,
     variant: 'fill',
-    type: 'regular',
+    size: 'medium',
     to: null,
     href: null,
     arrow: null,
   },
 );
+
+const buttonLookVariants = ['fill', 'outline', 'icon-square', 'icon-round'];
 
 const componentType = computed(() => {
   if (props.href) return 'a';
@@ -30,31 +36,12 @@ const componentType = computed(() => {
 });
 
 const styleClasses = computed(() => {
-  return props.cta
-    ? [
-        'transition duration-150',
-        props.type === 'regular'
-          ? 'inline-flex items-center gap-x-3 py-3.5 px-7 rounded border-1 border-solid text-sm font-medium hover:bg-gray-200'
-          : null,
-        props.type === 'round'
-          ? 'inline-block border-1 border-solid w-[50px] h-[50px] rounded-full'
-          : null,
-        props.type === 'square'
-          ? 'inline-block w-[50px] h-[50px] border-1 border-solid rounded'
-          : null,
-        props.variant === 'fill'
-          ? 'bg-blue-200 text-white border border-solid border-blue-200 hover:bg-blue-300'
-          : null,
-        props.variant === 'outline'
-          ? 'border border-solid border-blue-200'
-          : null,
-      ]
-    : [
-        'text-sm hover:underline transition duration-150',
-        props.variant === 'featured-link'
-          ? 'inline-flex items-center gap-x-3 whitespace-nowrap font-medium'
-          : null,
-      ];
+  return [
+    buttonLookVariants.includes(props.variant)
+      ? `button button--${props.size} button--${props.variant}`
+      : `text ${props.variant}`,
+    ,
+  ];
 });
 
 const arrowStyles = computed(() => {
@@ -85,3 +72,36 @@ const arrowStyles = computed(() => {
     />
   </component>
 </template>
+
+<style scoped>
+.button {
+  @apply py-3.5 px-7  inline-flex items-center gap-x-3  rounded border border-solid text-sm font-medium hover:bg-gray-200 transition duration-150;
+}
+
+.button--fill {
+  @apply bg-blue-200 text-white border-blue-200 hover:bg-blue-300;
+}
+.button--outline {
+  @apply border-blue-200;
+}
+
+.button--round {
+  @apply inline-block p-0 w-[50px] h-[50px] border border-solid rounded-full;
+}
+
+.button--square {
+  @apply inline-block p-0 w-[50px] h-[50px] border border-solid rounded;
+}
+
+.text {
+  @apply text-sm hover:underline transition duration-150;
+}
+
+.featured-link {
+  @apply inline-flex items-center gap-x-3 whitespace-nowrap font-medium;
+}
+
+.button--big {
+  @apply py-5 px-10;
+}
+</style>

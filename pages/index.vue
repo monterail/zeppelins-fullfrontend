@@ -32,27 +32,41 @@
     />
   </div>
   <div class="flex gap-3">
+    <BaseButton>Default</BaseButton>
     <BaseButton
-      :cta="true"
-      arrow="right"
-      variant="outline"
-      >Test</BaseButton
+      variant="fill"
+      arrow="left"
+      >Fill</BaseButton
     >
     <BaseButton
-      :cta="true"
-      type="square"
+      variant="outline"
+      arrow="left"
+      >Outline</BaseButton
+    >
+    <BaseButton
+      variant="fill"
+      size="round"
       >A</BaseButton
     >
     <BaseButton
-      :cta="false"
+      variant="outline"
+      size="square"
+      >A</BaseButton
+    >
+    <BaseButton
       href="/"
+      variant="text"
       >Link</BaseButton
     >
     <BaseButton
-      :cta="false"
+      to="/"
       variant="featured-link"
       arrow="right"
-      href="/"
+      >Link</BaseButton
+    >
+    <BaseButton
+      to="/"
+      variant="featured-link"
       >Link</BaseButton
     >
   </div>
