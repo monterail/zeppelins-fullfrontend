@@ -8,20 +8,14 @@ Accepted
 
 ## Context
 
-<!-- The issue motivating this decision, and any context that influences or constrains the decision. -->
-
 Our styling approach to keep consistency in the team.
 
 ## Decision
-
-<!-- The change that we're proposing or have agreed to implement. -->
 
 For quick and painless styling we use [TailwindCSS](https://tailwindcss.com/).
 We also decided ot use [HeadlessUI](https://headlessui.com/) to deliver frequently used components fast and stable.
 
 ## Consequences
-
-<!-- What becomes easier or more difficult to do and any risks introduced by the change that will need to be mitigated. -->
 
 Tailwind gives us opportunity to deliver fast and well organize styles in the app.
 
