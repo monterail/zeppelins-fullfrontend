@@ -44,12 +44,12 @@ const styleClasses = computed(() => {
   ];
 });
 
-const arrowStyles = computed(() => {
+const iconFill = computed(() => {
   return [
-    'w-[20px] h-[9px]',
+    'arrow-icon',
     props.variant === 'outline' || props.variant === 'featured-link'
-      ? 'fill-black'
-      : 'fill-white',
+      ? 'arrow-black'
+      : 'arrow-white',
   ];
 });
 </script>
@@ -63,12 +63,12 @@ const arrowStyles = computed(() => {
   >
     <ArrowLeft
       v-if="props.arrow === 'left'"
-      :class="arrowStyles"
+      :class="iconFill"
     />
     <slot />
     <ArrowRight
       v-if="props.arrow === 'right'"
-      :class="arrowStyles"
+      :class="iconFill"
     />
   </component>
 </template>
@@ -90,7 +90,7 @@ const arrowStyles = computed(() => {
 }
 
 .button--square {
-  @apply inline-block p-0 w-[50px] h-[50px] border border-solid rounded;
+  @apply inline-block p-0 w-[50px] h-[50px] border border-solid border-gray-300 rounded;
 }
 
 .text {
@@ -103,5 +103,16 @@ const arrowStyles = computed(() => {
 
 .button--big {
   @apply py-5 px-10;
+}
+
+.arrow-icon {
+  @apply w-[20px] h-[9px];
+}
+
+.arrow-black :deep(path) {
+  @apply fill-black;
+}
+.arrow-white :deep(path) {
+  @apply fill-white;
 }
 </style>
