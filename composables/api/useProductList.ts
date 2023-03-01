@@ -17,5 +17,9 @@ export const useProductList = (count = Infinity) => {
     return data;
   });
 
+  onServerPrefetch(async () => {
+    await result.suspense();
+  });
+
   return result;
 };

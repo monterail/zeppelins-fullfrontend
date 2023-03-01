@@ -1,8 +1,6 @@
 import type { Database } from '~/types/generated-types';
 import { useQuery } from 'vue-query';
 
-const route = useRoute();
-
 export const useProductById = (id: string | string[]) => {
   const client = useSupabaseClient<Database>();
 
@@ -17,6 +15,10 @@ export const useProductById = (id: string | string[]) => {
       throw new Error(error.message);
     }
     if (data) return data[0];
+  });
+
+  onServerPrefetch(async () => {
+    await result.suspense();
   });
 
   return result;

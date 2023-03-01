@@ -71,7 +71,7 @@ const listData = [
     id: 1,
     title: 'Amenities',
     description:
-      'Honestly it is total luxary onboard, they even have a cart with drinks!',
+      'Honestly it is total luxury onboard, they even have a cart with drinks!',
   },
   {
     id: 2,
