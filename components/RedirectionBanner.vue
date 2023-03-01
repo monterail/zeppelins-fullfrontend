@@ -17,6 +17,8 @@
         <BaseButton
           :arrow="cta.arrow"
           :variant="cta.variant"
+          :href="cta.href"
+          :to="cta.to"
           class="mt-5"
         >
           <span class="font-medium">
@@ -29,8 +31,6 @@
 </template>
 
 <script lang="ts" setup>
-import ArrowIcon from '@/assets/icons/arrow_thin_left.svg?skipsvgo';
-
 defineProps<{
   backgroundImage: {
     path: string;
@@ -41,6 +41,7 @@ defineProps<{
   cta: {
     title: string;
     href: string;
+    to: string;
     arrow?: 'left' | 'right' | null;
     variant?: 'fill' | 'outline' | 'text';
   };

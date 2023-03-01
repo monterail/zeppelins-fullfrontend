@@ -86,7 +86,7 @@ const iconFill = computed(() => {
   @apply inline-block p-0 w-[50px] h-[50px] border border-solid border-gray-300 rounded;
 }
 
-.button-text {
+.button--text {
   @apply inline-flex items-center gap-x-3 text-sm hover:underline transition duration-150;
 }
 
