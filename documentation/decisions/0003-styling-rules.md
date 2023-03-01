@@ -36,4 +36,4 @@ Tailwind gives us opportunity to deliver fast and well organize styles in the ap
 <div v-loading="isLoading">My div</div>
 ```
 
-It add class `v-loading` with loading spinner animation. With most cases it should work without any additional styling. If you meet some trouble with it check you custom pseudoelements (`:before`, `:after`) or `min-height` of your element. They might override styles from `v-loading`.
+It will add class `v-loading` with loading spinner animation. With most cases it should work without any additional styling. If you meet some trouble with it check you custom pseudoelements (`:before`, `:after`) or `min-height` of your element. They might override styles from `v-loading`.
