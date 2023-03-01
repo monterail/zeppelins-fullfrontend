@@ -8,6 +8,7 @@ export default <Partial<Config>>{
       4: '-10px 5px 18px rgba(103, 105, 116, 0.0833424)',
     },
     colors: {
+      transparent: 'transparent',
       'blue-100': '#8C8EFF',
       'blue-200': '#595CFF',
       'blue-300': '#383BE4',
