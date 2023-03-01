@@ -25,10 +25,10 @@
       class="col-span-1 h-56"
     />
     <ProductsList
-      v-if="zeppelins"
       class="col-span-2 mt-14"
       title="Most popular"
       :zeppelins="zeppelins"
+      :is-loading="isLoading"
     />
   </div>
 </template>
@@ -40,4 +40,5 @@ const backgroundImage = {
 };
 
 const { data: zeppelins } = useProductList(4);
+const { data: zeppelins, isLoading } = useProductList(4);
 </script>

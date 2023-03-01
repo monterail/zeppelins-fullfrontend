@@ -12,7 +12,10 @@
       </NuxtLink>
     </div>
 
-    <ul class="flex gap-10">
+    <ul
+      v-loading="isLoading"
+      class="flex gap-10"
+    >
       <li
         v-for="zeppelin in zeppelins"
         :key="zeppelin.product_id"
@@ -29,7 +32,8 @@ import ArrowIcon from '@/assets/icons/arrow_thin_left.svg?skipsvgo';
 
 defineProps<{
   title: string;
-  zeppelins: FullProduct[];
+  zeppelins?: FullProduct[];
+  isLoading: boolean;
 }>();
 </script>
 
