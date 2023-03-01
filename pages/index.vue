@@ -5,7 +5,12 @@
       header="Best zeppelins"
       subheader="Lowest prices"
       :background-image="backgroundImage"
-      :cta="{ title: 'Check out our flying boys', href: '#', isButton: true }"
+      :cta="{
+        title: 'Check out our flying boys',
+        href: '#',
+        variant: 'fill',
+        arrow: 'right',
+      }"
       class="col-span-2 h-56"
     />
     <RedirectionBanner
@@ -13,7 +18,12 @@
       header="Company with decades of history"
       :background-image="backgroundImage"
       transparent-background
-      :cta="{ title: 'Read more', href: '#' }"
+      :cta="{
+        title: 'Read more',
+        href: '#',
+        variant: 'text',
+        arrow: 'right',
+      }"
       class="col-span-1 h-56"
     />
     <RedirectionBanner
@@ -21,7 +31,12 @@
       header="Need help?"
       :background-image="backgroundImage"
       transparent-background
-      :cta="{ title: 'Contact us', href: '#' }"
+      :cta="{
+        title: 'Read more',
+        href: '#',
+        variant: 'text',
+        arrow: 'right',
+      }"
       class="col-span-1 h-56"
     />
 
@@ -30,45 +45,6 @@
       title="Most popular"
       :zeppelins="zeppelins"
     />
-  </div>
-  <div class="flex gap-3">
-    <BaseButton>Default</BaseButton>
-    <BaseButton
-      variant="fill"
-      arrow="left"
-      >Fill</BaseButton
-    >
-    <BaseButton
-      variant="outline"
-      arrow="left"
-      >Outline</BaseButton
-    >
-    <BaseButton
-      variant="fill"
-      size="round"
-      >A</BaseButton
-    >
-    <BaseButton
-      variant="outline"
-      size="square"
-      >A</BaseButton
-    >
-    <BaseButton
-      href="/"
-      variant="text"
-      >Link</BaseButton
-    >
-    <BaseButton
-      to="/"
-      variant="featured-link"
-      arrow="right"
-      >Link</BaseButton
-    >
-    <BaseButton
-      to="/"
-      variant="featured-link"
-      >Link</BaseButton
-    >
   </div>
 </template>
 

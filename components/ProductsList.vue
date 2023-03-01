@@ -3,13 +3,19 @@
     <div class="flex justify-between items-center mb-11">
       <h3>{{ title }}</h3>
 
-      <NuxtLink
+      <!-- <NuxtLink
         class="flex items-center whitespace-nowrap text-sm"
         to="/fleet"
       >
         See more
         <ArrowIcon class="rotate-180 arrow-black ml-4 w-6 h-6" />
-      </NuxtLink>
+      </NuxtLink> -->
+      <BaseButton
+        variant="text"
+        arrow="right"
+        to="/fleet"
+        >See more
+      </BaseButton>
     </div>
 
     <ul class="flex gap-10">

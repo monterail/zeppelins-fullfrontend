@@ -6,13 +6,7 @@ import ArrowRight from '~/assets/icons/arrow-right.svg?skipsvgo';
 
 const props = withDefaults(
   defineProps<{
-    variant?:
-      | 'fill'
-      | 'outline'
-      | 'text'
-      | 'featured-link'
-      | 'icon-square'
-      | 'icon-round';
+    variant?: 'fill' | 'outline' | 'text';
     size?: 'medium' | 'big' | 'round' | 'square';
     to?: RouteLocationRaw | null;
     href?: string | null;
@@ -31,7 +25,7 @@ const buttonLookVariants = ['fill', 'outline', 'icon-square', 'icon-round'];
 
 const componentType = computed(() => {
   if (props.href) return 'a';
-  if (props.to) return 'NuxtLink';
+  if (props.to) return 'nuxt-link';
   return 'button';
 });
 
@@ -47,7 +41,7 @@ const styleClasses = computed(() => {
 const iconFill = computed(() => {
   return [
     'arrow-icon',
-    props.variant === 'outline' || props.variant === 'featured-link'
+    props.variant === 'outline' || props.variant === 'text'
       ? 'arrow-black'
       : 'arrow-white',
   ];
@@ -94,11 +88,7 @@ const iconFill = computed(() => {
 }
 
 .text {
-  @apply text-sm hover:underline transition duration-150;
-}
-
-.featured-link {
-  @apply inline-flex items-center gap-x-3 whitespace-nowrap font-medium;
+  @apply inline-flex items-center gap-x-3 text-sm hover:underline transition duration-150;
 }
 
 .button--big {
