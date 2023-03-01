@@ -7,7 +7,8 @@ import ArrowRight from '~/assets/icons/arrow-right.svg?skipsvgo';
 const props = withDefaults(
   defineProps<{
     variant?: 'fill' | 'outline' | 'text';
-    size?: 'medium' | 'big' | 'round' | 'square';
+    size?: 'medium' | 'big';
+    shape?: 'regular' | 'round' | 'square';
     to?: RouteLocationRaw | null;
     href?: string | null;
     arrow?: null | 'right' | 'left';
@@ -15,13 +16,14 @@ const props = withDefaults(
   {
     variant: 'fill',
     size: 'medium',
+    shape: 'regular',
     to: null,
     href: null,
     arrow: null,
   },
 );
 
-const buttonLookVariants = ['fill', 'outline', 'icon-square', 'icon-round'];
+const buttonLookVariants = ['fill', 'outline'];
 
 const componentType = computed(() => {
   if (props.href) return 'a';
@@ -30,12 +32,9 @@ const componentType = computed(() => {
 });
 
 const styleClasses = computed(() => {
-  return [
-    buttonLookVariants.includes(props.variant)
-      ? `button button--${props.size} button--${props.variant}`
-      : `text ${props.variant}`,
-    ,
-  ];
+  return buttonLookVariants.includes(props.variant)
+    ? `button button--${props.size} button--${props.variant} button--${props.shape}`
+    : 'button-text';
 });
 
 const iconFill = computed(() => {
@@ -87,7 +86,7 @@ const iconFill = computed(() => {
   @apply inline-block p-0 w-[50px] h-[50px] border border-solid border-gray-300 rounded;
 }
 
-.text {
+.button-text {
   @apply inline-flex items-center gap-x-3 text-sm hover:underline transition duration-150;
 }
 
