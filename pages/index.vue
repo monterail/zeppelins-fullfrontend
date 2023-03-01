@@ -39,8 +39,8 @@
       }"
       class="col-span-1 h-56"
     />
-
     <ProductsList
+      v-if="zeppelins"
       class="col-span-2 mt-14"
       title="Most popular"
       :zeppelins="zeppelins"
@@ -53,43 +53,5 @@ const backgroundImage = {
   path: 'https://imgs.smoothradio.com/images/191589?width=1200&crop=16_9&signature=GRazrMVlAISqkcXrrNA6ku356R0=',
   alt: 'Zeppelin image',
 };
-
-const zeppelins: ZeppelinTile[] = [
-  {
-    id: 1,
-    image: {
-      alt: 'Name',
-      path: 'https://picsum.photos/300',
-    },
-    lowestPrice: 213,
-    name: 'Name',
-  },
-  {
-    id: 2,
-    image: {
-      alt: 'Led Zeppelin',
-      path: 'https://picsum.photos/260',
-    },
-    lowestPrice: 721,
-    name: 'Led Zeppelin',
-  },
-  {
-    id: 3,
-    image: {
-      alt: 'Ten niemiecki',
-      path: 'https://picsum.photos/320',
-    },
-    lowestPrice: 372,
-    name: 'Ten niemiecki',
-  },
-  {
-    id: 4,
-    image: {
-      alt: 'Jeszcze jeden',
-      path: 'https://picsum.photos/360',
-    },
-    lowestPrice: 137,
-    name: 'Jeszce jeden',
-  },
-];
+const { data: zeppelins } = useProductList(4);
 </script>
