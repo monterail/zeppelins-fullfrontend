@@ -22,11 +22,11 @@ The biggest advantage over the most popular tool (`nvm`) in our case is that `AS
 
 Our `.tool-versions` file looks like this:
 
-```
+```bash
 nodejs 18.14.0
 ```
 
-As starting from `Node 16.10` `Yarn` is shipped together with `Node` you don't need to install it separately. If you have another version of `Yarn` installed and after installing Node 18.14.0 through `ASDF` `Yarn` doesn't switch automatically you need to type this in the terminal:
+Starting from `Node 16.10` `Yarn` is shipped together with `Node`. You don't need to install it separately. If you have another version of `Yarn` installed and after installing Node 18.14.0 through `ASDF` `Yarn` doesn't switch automatically you need to type this in the terminal:
 
 ```bash
 corepack enable

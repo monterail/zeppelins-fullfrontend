@@ -26,7 +26,7 @@ Our composables with API calls should be placed in `@/composables/api/` catalog 
 
 Our composable for public call would look like this:
 
-```
+```ts
 import type { Database } from '~/types/generated-types';
 import { useQuery } from 'vue-query';
 
@@ -59,7 +59,7 @@ export const useProductList = (count = Infinity) => {
 
 Usage:
 
-```
+```ts
 const { data: productsList, isLoading } = useProductList();
 ```
 
