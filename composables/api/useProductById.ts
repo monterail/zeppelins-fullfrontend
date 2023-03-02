@@ -5,10 +5,13 @@ export const useProductById = (id: string | string[]) => {
   const client = useSupabaseClient<Database>();
 
   const result = useQuery(['productById', id], async () => {
+    setTimeout( () => {
+      console.log('hi'), 5000;
+    });
     const { data, error } = await client
       .from('products')
       .select('*, product_specifications (range)')
-      .eq('product_id', id);
+      .in('product_id', Array.isArray(id) ? id : [id]);
 
     if (error) {
       console.error(error);
@@ -20,6 +23,5 @@ export const useProductById = (id: string | string[]) => {
   onServerPrefetch(async () => {
     await result.suspense();
   });
-
   return result;
 };

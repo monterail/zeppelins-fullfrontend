@@ -39,6 +39,5 @@ const backgroundImage = {
   alt: 'Zeppelin image',
 };
 
-const { data: zeppelins } = useProductList(4);
 const { data: zeppelins, isLoading } = useProductList(4);
 </script>

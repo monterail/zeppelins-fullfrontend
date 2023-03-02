@@ -5,8 +5,8 @@
     </div>
     <div class="grid grid-cols-2 gap-x-16 gap-y-5 mb-44">
       <img
-        :src="zeppelin.image || ''"
-        :alt="zeppelin.name || ''"
+        :src="zeppelin.image || '~/assets/images/deafult_airship.JPG'"
+        :alt="zeppelin.name || 'Default zeppelin image'"
         class="w-full rounded"
       />
       <div class="w-full">
@@ -44,10 +44,18 @@
     </div>
     <ProductsList
       v-if="zeppelins"
+      :is-loading="isLoadingPopular"
       title="Others from our fleet"
       :zeppelins="zeppelins"
       class="mb-40"
     />
+  </div>
+  <div v-else-if="!isLoading">No zeppelin found...</div>
+  <div
+    v-else
+    :v-loading="isLoading"
+  >
+    We are loading
   </div>
 </template>
 
@@ -57,8 +65,8 @@ import ProductIcon2 from '~/assets/icons/product_icon_2.svg?skipsvgo';
 import ProductIcon3 from '~/assets/icons/product_icon_3.svg?skipsvgo';
 
 const id = useRoute().params.id || '';
-const { data: zeppelin } = useProductById(id);
-const { data: zeppelins } = useProductList(4);
+const { data: zeppelin, isLoading } = useProductById(id);
+const { data: zeppelins, isLoading: isLoadingPopular } = useProductList(4);
 
 const perks = [
   { id: 1, icon: ProductIcon1, description: 'Benefits description' },
