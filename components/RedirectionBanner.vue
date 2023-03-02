@@ -40,8 +40,8 @@ defineProps<{
   subheader?: string;
   cta: {
     title: string;
-    href: string;
-    to: string;
+    href?: string;
+    to?: string;
     arrow?: 'left' | 'right' | null;
     variant?: 'fill' | 'outline' | 'text';
   };
