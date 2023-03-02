@@ -14,29 +14,23 @@
       >
         <h2>{{ header }}</h2>
         <p class="text-sm">{{ subheader }}</p>
-        <nuxt-link
-          :to="cta.href"
-          class="mt-5 flex"
-          :class="{
-            'bg-blue-200 text-white px-5 py-2 rounded-md': cta.isButton,
-          }"
+        <BaseButton
+          :arrow="cta.arrow"
+          :variant="cta.variant"
+          :href="cta.href"
+          :to="cta.to"
+          class="mt-5"
         >
-          <span>
+          <span class="font-medium">
             {{ cta.title }}
           </span>
-          <ArrowIcon
-            class="ml-2 rotate-180 w-6"
-            :class="cta.isButton ? 'fill-white' : 'fill-black'"
-          />
-        </nuxt-link>
+        </BaseButton>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import ArrowIcon from '@/assets/icons/arrow_thin_left.svg?skipsvgo';
-
 defineProps<{
   backgroundImage: {
     path: string;
@@ -46,8 +40,10 @@ defineProps<{
   subheader?: string;
   cta: {
     title: string;
-    href: string;
-    isButton?: boolean;
+    href?: string;
+    to?: string;
+    arrow?: 'left' | 'right' | null;
+    variant?: 'fill' | 'outline' | 'text';
   };
   transparentBackground?: boolean;
 }>();
