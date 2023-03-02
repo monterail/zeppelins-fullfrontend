@@ -38,5 +38,6 @@ const backgroundImage = {
   path: 'https://imgs.smoothradio.com/images/191589?width=1200&crop=16_9&signature=GRazrMVlAISqkcXrrNA6ku356R0=',
   alt: 'Zeppelin image',
 };
+
 const { data: zeppelins, isLoading } = useProductList(4);
 </script>
