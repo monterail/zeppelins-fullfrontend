@@ -8,8 +8,8 @@
       type="date"
       id="`date-picker__${name}`"
       :name="name"
-      :value="new Date().toJSON().slice(0, 10)"
-      @change="$emit('update:date', ($event.target as HTMLInputElement).value)"
+      :value="currentDate"
+      @change="handleChange"
       class="block p-3 border rounded border-gray-300 text-xs w-full max-w-md"
     />
   </label>
@@ -22,7 +22,12 @@ defineProps<{
   date: string;
 }>();
 
-defineEmits(['update:date']);
+const emit = defineEmits(['update:date']);
+
+const handleChange = ($event: Event) =>
+  emit('update:date', ($event.target as HTMLInputElement).value);
+
+const currentDate = new Date().toJSON().slice(0, 10);
 </script>
 
 <style scoped>

@@ -3,9 +3,9 @@
     <CheckoutDate
       v-model:date="formData.date"
       v-model:count="formData.days"
+      class="mb-12"
     />
-    <!-- <BaseCounter /> -->
-    <!-- INSURANCE -->
+    <CheckoutInsurance />
     <!-- PILOT LICENSE -->
     <!-- HR -->
     <!-- BUTTONS -->
@@ -13,5 +13,9 @@
 </template>
 
 <script setup lang="ts">
-const formData = ref({ date: new Date().toJSON().slice(0, 10), days: 0 });
+const formData = ref({
+  date: new Date().toJSON().slice(0, 10),
+  days: 0,
+  insurance: undefined,
+});
 </script>
