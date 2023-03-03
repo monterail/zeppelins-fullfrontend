@@ -34,7 +34,7 @@ const componentType = computed(() => {
 const styleClasses = computed(() => {
   return buttonLookVariants.includes(props.variant)
     ? `button button--${props.size} button--${props.variant} button--${props.shape}`
-    : 'button-text';
+    : 'button--text';
 });
 
 const iconFill = computed(() => {
