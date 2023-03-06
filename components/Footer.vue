@@ -71,8 +71,8 @@
           <p class="mb-3 font-">{{ list.title }}</p>
           <ul class="text-sm">
             <li
-              v-for="(link, index) in list.links"
-              :key="index"
+              v-for="(link, idx) in list.links"
+              :key="idx"
               class="mb-3"
             >
               <a :href="link.href">{{ link.title }}</a>

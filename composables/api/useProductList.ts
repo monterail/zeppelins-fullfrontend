@@ -1,5 +1,5 @@
-import type { Database } from '~/types/generated-types';
 import { useQuery } from 'vue-query';
+import type { Database } from '~/types/generated-types';
 
 export const useProductList = (count = Infinity) => {
   const client = useSupabaseClient<Database>();
