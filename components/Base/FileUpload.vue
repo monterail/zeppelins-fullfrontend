@@ -15,7 +15,6 @@
         <div v-if="file">
           {{ file.name }}
         </div>
-        <div v-else-if="isDragging">Release to drop files here.</div>
         <div v-else>
           <slot />
         </div>
@@ -39,11 +38,6 @@ const file = ref();
 const handleChange = (e: Event) => {
   if (e.target.files && e.target.files[0]) {
     const incoming = e.target.files[0];
-    // const fileSize = Math.round((file.size / 1024 / 1024) * 100) / 100;
-    // const fileExtention = file.name.split('.').pop();
-    // const fileName = file.name.split('.').shift();
-    // const isImage = ['jpg', 'jpeg', 'png', 'gif'].includes(fileExtention);
-    console.log(incoming);
     file.value = incoming;
   }
 };
