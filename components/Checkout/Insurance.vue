@@ -5,13 +5,15 @@
       v-model:option="selectedInsurance"
       :options="insuranceOptions"
       :plans="insuranceOptions"
+      @update:option="$emit('update:insurance', $event)"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-const emit = defineEmits(['update:insurance']);
+defineEmits(['update:insurance']);
 
+// TODO: replace wit API data
 const insuranceOptions = ref([
   {
     id: 1,
@@ -33,9 +35,6 @@ const insuranceOptions = ref([
   },
 ]);
 
+// This needs to be passed to rasio group, always first item of array
 const selectedInsurance = ref(insuranceOptions.value[0]);
-
-watch(selectedInsurance.value, (newVal, oldVal) => {
-  emit('update:insurance', newVal);
-});
 </script>

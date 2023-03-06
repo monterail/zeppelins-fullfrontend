@@ -33,12 +33,16 @@ withDefaults(
   },
 );
 
+const emit = defineEmits(['update:file'])
+
 const file = ref();
 
 const handleChange = (e: Event) => {
-  if (e.target.files && e.target.files[0]) {
-    const incoming = e.target.files[0];
+  const target = <HTMLInputElement>e.target
+  if (target.files && target.files[0]) {
+    const incoming = target.files[0];
     file.value = incoming;
+    emit('update:file', file.value)
   }
 };
 </script>

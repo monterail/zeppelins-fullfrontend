@@ -2,8 +2,14 @@
   <div>
     <p class="mb-7 text-2xl">Date</p>
     <div class="w-full flex gap-3">
-      <BaseDatePicker v-model:date="date" />
-      <BaseCounter v-model:count="count" />
+      <BaseDatePicker
+        v-model:date="date"
+        @update:date="$emit('update:date', $event)"
+      />
+      <BaseCounter
+        v-model:count="count"
+        @update:count="$emit('update:count', $event)"
+      />
     </div>
   </div>
 </template>
@@ -12,12 +18,5 @@
 const date = ref('');
 const count = ref(0);
 
-const emit = defineEmits(['update:date', 'update:count']);
-
-watch(date, (newVal, oldVal) => {
-  emit('update:date', newVal);
-});
-watch(count, (newVal, oldVal) => {
-  emit('update:count', newVal);
-});
+defineEmits(['update:date', 'update:count']);
 </script>

@@ -9,7 +9,10 @@
       v-model:insurance="formData.insurance"
       class="mb-12"
     />
-    <LicenseUpload class="mb-12" />
+    <LicenseUpload
+      v-model:license="formData.license"
+      class="mb-12"
+    />
     <hr class="w-full border bg-gray-200 mb-12" />
     <div class="flex justify-between">
       <BaseButton
@@ -26,12 +29,13 @@
 <script setup lang="ts">
 import LicenseUpload from './LicenseUpload.vue';
 
-const emit = defineEmits('update:form-data');
+const emit = defineEmits(['update:form-data']);
 
 const formData = ref({
   date: new Date().toJSON().slice(0, 10),
   days: 0,
   insurance: undefined,
+  license: undefined,
 });
 
 watch(
