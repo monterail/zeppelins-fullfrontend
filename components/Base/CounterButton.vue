@@ -19,7 +19,7 @@ const props = defineProps<{
 
 const emit = defineEmits(['update:counter']);
 
-const isPlusButton = computed(() => (props.type === 'plus' ? true : false));
+const isPlusButton = computed(() => props.type === 'plus');
 
 const handleClick = () => {
   isPlusButton.value ? incrementCounter() : decrementCounter();

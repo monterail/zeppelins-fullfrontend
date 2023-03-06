@@ -1,14 +1,16 @@
 <template>
-  <p class="mb-7 text-2xl">Insurance</p>
-  <BaseRadioGroup
-    v-model:option="selectedInsurance"
-    :options="insuranceOptions"
-    :plans="insuranceOptions"
-  />
+  <div>
+    <p class="mb-7 text-2xl">Insurance</p>
+    <BaseRadioGroup
+      v-model:option="selectedInsurance"
+      :options="insuranceOptions"
+      :plans="insuranceOptions"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">
-// defineEmits([]);
+const emit = defineEmits(['update:insurance']);
 
 const insuranceOptions = ref([
   {
@@ -30,5 +32,10 @@ const insuranceOptions = ref([
     detail: '199',
   },
 ]);
+
 const selectedInsurance = ref(insuranceOptions.value[0]);
+
+watch(selectedInsurance.value, (newVal, oldVal) => {
+  emit('update:insurance', newVal);
+});
 </script>
