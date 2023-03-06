@@ -9,11 +9,13 @@
           class="mx-auto"
         />
       </nuxt-link>
-      <nuxt-link
-        :to="'#'"
+      <BaseButton
+        variant="text"
         class="ml-auto absolute right-0 top-1/2 transition-transform -translate-y-1/2 hover:font-bold"
-        >Sign in</nuxt-link
+        @click="showAuthModal"
       >
+        Sign in
+      </BaseButton>
     </div>
     <menu class="flex h-20 w-max-content-w mx-auto">
       <ul class="flex justify-between items-center w-[400px] mx-auto">
@@ -25,8 +27,9 @@
           <nuxt-link
             :to="link.href"
             class="hover:font-bold"
-            >{{ link.name }}</nuxt-link
           >
+            {{ link.name }}
+          </nuxt-link>
         </li>
       </ul>
     </menu>
@@ -40,4 +43,5 @@ const navLinks: Array<{ name: string; href: string }> = [
   { name: 'About us', href: '#' },
   { name: 'Contact us', href: '#' },
 ];
+const { show: showAuthModal } = useAuthModal();
 </script>

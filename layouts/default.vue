@@ -4,4 +4,5 @@
     <slot />
   </main>
   <LayoutFooter />
+  <AuthModal />
 </template>

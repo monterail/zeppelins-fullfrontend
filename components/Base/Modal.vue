@@ -6,8 +6,8 @@
   >
     <Dialog
       as="div"
-      @click="$emit('close')"
       class="relative z-10"
+      @click="$emit('close')"
     >
       <TransitionChild
         as="template"
@@ -35,7 +35,7 @@
             leave-to="opacity-0 scale-95"
           >
             <DialogPanel
-              class="w-full relative max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
+              class="w-full relative max-w-md transform overflow-hidden rounded-2xl bg-white p-5 text-left align-middle shadow-xl transition-all"
             >
               <button
                 class="absolute right-4 top-4"
@@ -49,11 +49,11 @@
               </button>
               <DialogTitle
                 as="h3"
-                class="text-lg font-medium leading-6 text-gray-900"
+                class="text-4xl leading-tight font-medium text-gray-900 max-w-xs px-3 mx-auto text-center"
               >
                 <slot name="title" />
               </DialogTitle>
-              <div class="mt-2">
+              <div class="mt-5">
                 <slot name="content" />
               </div>
             </DialogPanel>

@@ -2,15 +2,15 @@
   <div class="my-4 flex flex-col">
     <label
       v-if="label"
-      class="mb-4"
+      class="mb-2"
       :for="id"
     >
-      {{ label }} {{ required ? ' *' : '' }}
+      {{ label }} {{ required ? '*' : '' }}
     </label>
     <input
-      class="border border-gray-300 rounded rounded-1 px-4 py-2"
       v-bind="$attrs"
       v-model="value"
+      class="border border-gray-300 rounded rounded-1 px-4 py-2 placeholder:font-light"
     />
   </div>
 </template>
@@ -22,24 +22,13 @@ export default {
 </script>
 
 <script lang="ts" setup>
-const props = defineProps({
-  label: {
-    type: String,
-    required: false,
-  },
-  id: {
-    type: String,
-    required: false,
-  },
-  modelValue: {
-    type: String,
-    required: true,
-  },
-  required: {
-    type: Boolean,
-    required: false,
-  },
-});
+const props = defineProps<{
+  label?: string;
+  id?: string;
+  required?: boolean;
+  modelValue: string;
+}>();
+
 const emit = defineEmits(['update:modelValue']);
 
 const value = computed({
