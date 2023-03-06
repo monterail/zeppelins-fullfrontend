@@ -2,6 +2,14 @@
   <section>
     <div class="flex justify-between items-center mb-11">
       <h3>{{ title }}</h3>
+
+      <!-- <NuxtLink
+        class="flex items-center whitespace-nowrap text-sm"
+        to="/fleet"
+      >
+        See more
+        <ArrowIcon class="rotate-180 arrow-black ml-4 w-6 h-6" />
+      </NuxtLink> -->
       <BaseButton
         variant="text"
         arrow="right"
@@ -26,6 +34,7 @@
 
 <script setup lang="ts">
 import { FullProduct } from '~/types/products';
+import ArrowIcon from '@/assets/icons/arrow_thin_left.svg?skipsvgo';
 
 defineProps<{
   title: string;

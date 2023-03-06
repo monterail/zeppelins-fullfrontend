@@ -8,8 +8,8 @@
       <div v-if="isLoading">loading...</div>
       <div v-else-if="isError">{{ error }}</div>
       <ProductTile
-        v-for="zep in mostPopular"
         v-else-if="mostPopular"
+        v-for="zep in mostPopular"
         :key="zep.product_id"
         :zeppelin="zep"
         class="w-1/4"
