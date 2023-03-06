@@ -35,6 +35,7 @@
             leave-to="opacity-0 scale-95"
           >
             <DialogPanel
+              v-loading="isLoading"
               class="w-full relative max-w-md transform overflow-hidden rounded-2xl bg-white p-5 text-left align-middle shadow-xl transition-all"
             >
               <button
@@ -75,6 +76,7 @@ import {
 
 defineProps<{
   isShown: boolean;
+  isLoading: boolean;
 }>();
 
 defineEmits<{

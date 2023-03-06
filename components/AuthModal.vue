@@ -1,7 +1,8 @@
 <template>
   <BaseModal
     :is-shown="isShown"
-    @close="hide"
+    :is-loading="isLoading"
+    @close="closeModal"
   >
     <template #title>
       <template v-if="authStep === 'login'">
@@ -88,7 +89,7 @@
       <div class="flex justify-center mt-5">
         <BaseButton
           class="w-40"
-          @click="hide"
+          @click="closeModal"
         >
           Okay, got it!
         </BaseButton>
@@ -100,6 +101,14 @@
 <script lang="ts" setup>
 const { authStep, formData, isShown, hide } = useAuthModal();
 
+const isLoading = ref(false); // todo: isLoading value from VueQuery
+
+function closeModal() {
+  if (!isLoading.value) {
+    hide();
+  }
+}
+
 function switchStep() {
   if (authStep.value === 'login') {
     authStep.value = 'signup';
@@ -108,13 +117,29 @@ function switchStep() {
   }
 }
 
-function submitAuth() {
+async function submitAuth() {
   if (authStep.value === 'signup') {
     // todo: API call
+    await new Promise((resolve) => {
+      isLoading.value = true;
+      setTimeout(() => {
+        resolve(true);
+        isLoading.value = false;
+      }, 2000);
+    });
+    // ------------
     authStep.value = 'info';
   } else {
     // todo: API call
-    hide();
+    await new Promise((resolve) => {
+      isLoading.value = true;
+      setTimeout(() => {
+        resolve(true);
+        isLoading.value = false;
+      }, 2000);
+    });
+    // ------------
+    closeModal();
   }
 }
 </script>
