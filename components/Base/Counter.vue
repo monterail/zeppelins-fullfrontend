@@ -17,11 +17,7 @@
 </template>
 
 <script setup lang="ts">
-const count = ref(0);
-
-defineProps<{
-  count: number;
-}>();
+const count = ref(1);
 
 defineEmits(['update:count']);
 </script>

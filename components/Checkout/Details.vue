@@ -13,16 +13,7 @@
       class="mb-12"
       @update:license="$emit('update:license', $event)"
     />
-    <hr class="w-full border bg-gray-200 mb-12" />
-    <div class="flex justify-between">
-      <BaseButton
-        arrow="left"
-        variant="text"
-      >
-        Back
-      </BaseButton>
-      <BaseButton arrow="right">Book</BaseButton>
-    </div>
+    <hr class="w-full border border-gray-300 mb-12" />
   </div>
 </template>
 
@@ -32,5 +23,6 @@ defineEmits([
   'update:days',
   'update:license',
   'update:insurance',
+  'submit',
 ]);
 </script>

@@ -1,32 +1,45 @@
 <template>
-  <div class="w-full border border-gray-100 rounded p-5 flex flex-col gap-10">
+  <div class="w-full max-h-[405px] border border-gray-200 rounded-[5px] p-5">
     <h4>Order summary</h4>
-    <div class="flex">
+    <div
+      v-if="product"
+      class="flex mt-10"
+    >
       <img
-        class="w-[100px] h-[100px] mr-5 rounded"
+        v-if="product.image && product.name"
+        class="w-[100px] h-[100px] mr-5 rounded-[4px]"
         :src="product.image"
         :alt="product.name"
       />
       <div>
-        <p>{{ product.name || 'Name' }}</p>
-        <p class="font-semibold">$ {{ product.price }}</p>
+        <p class="text">{{ product.name || 'Name' }}</p>
+        <p class="font-semibold">${{ product.price }}</p>
       </div>
     </div>
-    <ul>
-      <li>
-        <!-- <p v-if="props.order.insurance.title"> -->
-        <!--   {{ props.order.insurance.title }} -->
-        <!-- </p> -->
-        <!-- <p v-else>Not selected...</p> -->
-        <!-- <p>{{ order.insurance.detail }}</p> -->
+    <ul class="mt-10">
+      <li
+        v-if="order.insurance"
+        class="w-full flex justify-between py-4 border-t border-t-gray-200"
+      >
+        <p v-if="order?.insurance?.title">
+          {{ order.insurance.title }}
+        </p>
+        <p class="font-bold">${{ order.insurance.detail }}</p>
       </li>
-      <li>
-        <!-- <p>{{ order.days }} days</p> -->
-        <!-- <p>{{ days * +selectedProduct.price }}</p> -->
+      <li
+        v-else
+        class="w-full flex justify-between py-4 border-t border-t-gray-200"
+      >
+        <p>No insurance</p>
+        <p class="font-bold">$0</p>
       </li>
-      <li>
-        <!-- <p>Total</p> -->
-        <!-- <p>{{ total }}</p> -->
+      <li class="w-full flex justify-between py-4 border-t border-gray-300">
+        <p>{{ order.days }} days</p>
+        <p class="font-bold">${{ reservationCost }}</p>
+      </li>
+      <li class="w-full flex justify-between py-4 border-t border-t-gray-200">
+        <p>Total</p>
+        <p class="font-bold">${{ total }}</p>
       </li>
     </ul>
   </div>
@@ -41,10 +54,15 @@ const props = defineProps<{
 
 const { data: product } = useProductById('1');
 
+const reservationCost = computed(() => {
+  return props.order.days && product.value && product.value.price
+    ? props.order.days * +product.value.price
+    : 0;
+});
+
 const total = computed(() => {
-  return props.order.insurance && props.order.days
-    ? props.order.days * +product.value.price + props.order.insurance.detail ||
-        ''
-    : '';
+  return props.order.insurance?.detail
+    ? reservationCost.value + parseInt(props.order.insurance.detail)
+    : reservationCost.value;
 });
 </script>

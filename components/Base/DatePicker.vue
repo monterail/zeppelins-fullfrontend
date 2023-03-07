@@ -5,12 +5,12 @@
   >
     <slot class="block mb-7" />
     <input
+      :id="`date-picker__${name}`"
       type="date"
-      id="`date-picker__${name}`"
       :name="name"
       :value="currentDate"
-      @change="handleChange"
       class="block p-3 border rounded border-gray-300 text-xs w-full max-w-md"
+      @change="handleChange"
     />
   </label>
 </template>
@@ -19,20 +19,12 @@
 defineProps<{
   name?: string;
   disabled?: boolean;
-  date: string;
 }>();
 
 const emit = defineEmits(['update:date']);
 
+const currentDate = new Date().toJSON().slice(0, 10);
+
 const handleChange = ($event: Event) =>
   emit('update:date', ($event.target as HTMLInputElement).value);
-
-const currentDate = new Date().toJSON().slice(0, 10);
 </script>
-
-<style scoped>
-/* input[type='date']::-webkit-calendar-picker-indicator {
-  display: none;
-  -webkit-appearance: none;
-} */
-</style>

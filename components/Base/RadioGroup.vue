@@ -1,19 +1,21 @@
 <template>
   <RadioGroup
     v-if="options"
-    :modelValue="option"
-    @update:modelValue="(value) => emit('update:option', value)"
+    :model-value="option"
+    @update:model-value="(value) => emit('update:option', value)"
   >
-    <RadioGroupLabel><slot /></RadioGroupLabel>
+    <RadioGroupLabel>
+      <slot />
+    </RadioGroupLabel>
     <div class="flex flex-col gap-y-5">
       <RadioGroupOption
-        v-for="option in options"
-        :key="option.id"
+        v-for="opt in options"
+        :key="opt.id"
         v-slot="{ checked }"
-        :value="option"
+        :value="opt"
       >
         <BaseRadioOption
-          :option="option"
+          :option="opt"
           :checked="checked"
         />
       </RadioGroupOption>

@@ -6,8 +6,23 @@
       @update:days="handleDays"
       @update:insurance="handleInsurance"
       @update:license="handleLicense"
+      @submit="handleSubmit"
     />
     <CheckoutSummary :order="formData" />
+    <div class="flex justify-between">
+      <BaseButton
+        arrow="left"
+        variant="text"
+      >
+        Back
+      </BaseButton>
+      <BaseButton
+        arrow="right"
+        :disabled="!formValid"
+        @click="handleSubmit"
+        >Book</BaseButton
+      >
+    </div>
   </div>
 </template>
 
@@ -15,15 +30,31 @@
 import { Order } from '~/types/order';
 import { RadioOption } from '~/types/radio-options';
 
+const formData: Order = reactive({
+  date: null,
+  days: 1,
+  license: null,
+  insurance: null,
+});
+
 const handleDate = (e: string) => (formData.date = e);
 const handleDays = (e: number) => (formData.days = e);
 const handleInsurance = (e: RadioOption) => (formData.insurance = e);
 const handleLicense = (e: File) => (formData.license = e);
 
-const formData: Order = reactive({
-  date: null,
-  days: null,
-  license: null,
-  insurance: null,
+const formValid = computed(() => {
+  return !!(
+    formData.date &&
+    formData.days &&
+    formData.license &&
+    formData.insurance
+  );
 });
+
+const handleSubmit = (e: Event) => {
+  e.preventDefault();
+  formValid.value
+    ? console.log('order', formData)
+    : console.error('Please fill in the form correctly');
+};
 </script>
