@@ -1,6 +1,10 @@
 <template>
   <div class="main">
-    <div class="w-full bg-gray-100 border-1 border-dashed h-20 rounded-3xl">
+    <div 
+      class="w-full bg-gray-100 border-1 border-dashed h-20 rounded-3xl" 
+      :ondrop="handleChange" 
+      :ondragover="handleOnDragOver"
+    >
       <input
         id="fileInput"
         type="file"
@@ -12,9 +16,8 @@
         for="fileInput"
         class="file-label w-full h-full flex justify-center items-center cursor-pointer"
       >
-        <div v-if="file">
-          {{ file.name }}
-        </div>
+        <div v-if="file">{{ file.name }}</div>
+        <div v-else-if="onDragOver">Drop your file here</div>
         <div v-else>
           <slot />
         </div>
@@ -36,8 +39,10 @@ withDefaults(
 const emit = defineEmits(['update:file'])
 
 const file = ref();
+const onDragOver = ref(false)
 
 const handleChange = (e: Event) => {
+  e.preventDefault()
   const target = <HTMLInputElement>e.target
   if (target.files && target.files[0]) {
     const incoming = target.files[0];
@@ -45,4 +50,8 @@ const handleChange = (e: Event) => {
     emit('update:file', file.value)
   }
 };
+
+const handleOnDragOver = (e: Event) => {
+  onDragOver.value = true
+}
 </script>

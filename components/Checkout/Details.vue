@@ -1,17 +1,17 @@
 <template>
   <div>
     <CheckoutDate
-      v-model:date="formData.date"
-      v-model:count="formData.days"
       class="mb-12"
+      @update:date="$emit('update:date', $event)"
+      @update:days="$emit('update:days', $event)"
     />
     <CheckoutInsurance
-      v-model:insurance="formData.insurance"
       class="mb-12"
+      @update:insurance="$emit('update:insurance', $event)"
     />
-    <LicenseUpload
-      v-model:license="formData.license"
+    <CheckoutLicenseUpload
       class="mb-12"
+      @update:license="$emit('update:license', $event)"
     />
     <hr class="w-full border bg-gray-200 mb-12" />
     <div class="flex justify-between">
@@ -27,22 +27,10 @@
 </template>
 
 <script setup lang="ts">
-import LicenseUpload from './LicenseUpload.vue';
-
-const emit = defineEmits(['update:form-data']);
-
-const formData = ref({
-  date: new Date().toJSON().slice(0, 10),
-  days: 0,
-  insurance: undefined,
-  license: undefined,
-});
-
-watch(
-  formData,
-  (newVal) => {
-    emit('update:form-data', newVal);
-  },
-  { deep: true },
-);
+defineEmits([
+  'update:date',
+  'update:days',
+  'update:license',
+  'update:insurance',
+]);
 </script>
