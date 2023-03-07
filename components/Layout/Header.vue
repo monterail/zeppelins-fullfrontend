@@ -9,6 +9,9 @@
           class="mx-auto"
         />
       </nuxt-link>
+      <button @click="authClient.auth.signOut()">
+        {{ user?.email }}
+      </button>
       <BaseButton
         variant="text"
         class="ml-auto absolute right-0 top-1/2 transition-transform -translate-y-1/2 hover:font-bold"
@@ -44,4 +47,6 @@ const navLinks: Array<{ name: string; href: string }> = [
   { name: 'Contact us', href: '#' },
 ];
 const { show: showAuthModal } = useAuthModal();
+const user = useSupabaseUser();
+const authClient = useSupabaseAuthClient();
 </script>
