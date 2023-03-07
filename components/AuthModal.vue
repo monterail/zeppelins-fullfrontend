@@ -2,7 +2,7 @@
   <BaseModal
     :is-shown="isShown"
     :is-loading="isLoading"
-    @close="closeModal"
+    @close="userCloseModal"
   >
     <template #title>
       <template v-if="authStep === 'login'">
@@ -66,7 +66,7 @@
           <BaseButton
             variant="text"
             class="text-blue-200"
-            @click="switchStep"
+            @click="switchAuthStep"
           >
             {{ authStep === 'login' ? 'Sign up' : 'Sign in' }}
           </BaseButton>
@@ -88,7 +88,7 @@
       <div class="flex justify-center mt-5">
         <BaseButton
           class="w-40"
-          @click="closeModal"
+          @click="userCloseModal"
         >
           Okay, got it!
         </BaseButton>
@@ -99,16 +99,16 @@
 
 <script lang="ts" setup>
 const { authStep, formData, isShown, hide } = useAuthModal();
+const { isLoading: isSignupLoading, mutate: signup } = useSignupUser();
+const { isLoading: isLoginLoading, mutate: login } = useLoginUser();
 
-const isLoading = ref(false); // todo: isLoading value from VueQuery
+const isLoading = computed(() => isSignupLoading.value || isLoginLoading.value);
 
-function closeModal() {
-  if (!isLoading.value) {
-    hide();
-  }
+function userCloseModal() {
+  if (!isLoading.value) hide();
 }
 
-function switchStep() {
+function switchAuthStep() {
   if (authStep.value === 'login') {
     authStep.value = 'signup';
   } else {
@@ -116,29 +116,18 @@ function switchStep() {
   }
 }
 
-async function submitAuth() {
+function showInfoStep() {
+  authStep.value = 'info';
+}
+
+function submitAuth() {
+  const { email, password } = formData.value;
+  const credentials = { email, password };
+
   if (authStep.value === 'signup') {
-    // todo: API call
-    await new Promise((resolve) => {
-      isLoading.value = true;
-      setTimeout(() => {
-        resolve(true);
-        isLoading.value = false;
-      }, 2000);
-    });
-    // ------------
-    authStep.value = 'info';
+    signup(credentials, { onSuccess: showInfoStep });
   } else {
-    // todo: API call
-    await new Promise((resolve) => {
-      isLoading.value = true;
-      setTimeout(() => {
-        resolve(true);
-        isLoading.value = false;
-      }, 2000);
-    });
-    // ------------
-    closeModal();
+    login(credentials, { onSuccess: hide });
   }
 }
 </script>

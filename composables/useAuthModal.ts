@@ -28,7 +28,9 @@ export function useAuthModal() {
     shown.value = true;
   };
 
-  const hide = () => (shown.value = false);
+  const hide = () => {
+    shown.value = false;
+  };
 
   return {
     authStep,
