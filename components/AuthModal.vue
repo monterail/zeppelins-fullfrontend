@@ -77,15 +77,14 @@
       v-else
       #content
     >
-      <span class="block">
+      <span>
         An email will be sent to
         <strong v-if="formData.email">
           {{ formData.email }}
         </strong>
         <template v-else>your address</template>
-        with a confirmation link.
+        with a confirmation link. Click it to activate your account!
       </span>
-      <span class="block mt-1">Click it to activate your account!</span>
       <div class="flex justify-center mt-5">
         <BaseButton
           class="w-40"
