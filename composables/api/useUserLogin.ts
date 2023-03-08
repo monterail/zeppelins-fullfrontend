@@ -5,16 +5,17 @@ export const useUserLogin = () => {
 
   const result = useMutation(
     async (credentials: { email: string; password: string }) => {
-      const { data, error } = await authClient.auth.signInWithPassword(
-        credentials,
-      );
+      const {
+        data: { user },
+        error,
+      } = await authClient.auth.signInWithPassword(credentials);
 
       if (error) {
         console.error(error);
         throw new Error(error.message);
       }
 
-      return data;
+      return user?.id;
     },
   );
   return result;

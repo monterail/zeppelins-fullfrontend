@@ -121,13 +121,12 @@ function showConfirmationStep() {
 }
 
 function submitAuth() {
-  const { email, password } = formData.value;
-  const credentials = { email, password };
-
   if (authStep.value === 'signup') {
-    signup(credentials, { onSuccess: showConfirmationStep });
+    const { email, password, name } = formData.value;
+    signup({ email, password, name }, { onSuccess: showConfirmationStep });
   } else {
-    login(credentials, { onSuccess: hide });
+    const { email, password } = formData.value;
+    login({ email, password }, { onSuccess: hide });
   }
 }
 </script>

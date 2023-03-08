@@ -9,16 +9,25 @@
           class="mx-auto"
         />
       </nuxt-link>
-      <button @click="authClient.auth.signOut()">
-        {{ user?.email }}
-      </button>
+      <!-- temporary solution for showing user being logged in & sign out button -->
+      <span> {{ userData?.username }}</span>
       <BaseButton
+        v-if="userData"
         variant="text"
         class="ml-auto absolute right-0 top-1/2 transition-transform -translate-y-1/2 hover:font-bold"
+        @click="signout"
+      >
+        Sign out
+      </BaseButton>
+      <BaseButton
+        v-else
+        variant="text"
+        class="ml-auto absolute right-0 top-1/2 transition-transform -translate-y-1/2 hover:font-bold max-h-[17px]"
         @click="showAuthModal"
       >
         Sign in
       </BaseButton>
+      <!------------------------->
     </div>
     <menu class="flex h-20 w-max-content-w mx-auto">
       <ul class="flex justify-between items-center w-[400px] mx-auto">
@@ -46,7 +55,8 @@ const navLinks: Array<{ name: string; href: string }> = [
   { name: 'About us', href: '#' },
   { name: 'Contact us', href: '#' },
 ];
+
 const { show: showAuthModal } = useAuthModal();
-const user = useSupabaseUser();
-const authClient = useSupabaseAuthClient();
+const { mutate: signout } = useUserSignout();
+const { data: userData } = useUserData();
 </script>
