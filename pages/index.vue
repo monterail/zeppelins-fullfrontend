@@ -1,6 +1,6 @@
 <template>
   <div class="w-full grid grid-cols-2 gap-y-7 gap-x-10 grid-rows-2 mt-8 mb-20">
-    <RedirectionBanner
+    <BaseRedirectionBanner
       link="/"
       header="Best zeppelins"
       subheader="Lowest prices"
@@ -13,7 +13,7 @@
       }"
       class="col-span-2 h-56"
     />
-    <RedirectionBanner
+    <BaseRedirectionBanner
       link="/"
       header="Company with decades of history"
       :background-image="backgroundImage"
@@ -26,7 +26,7 @@
       }"
       class="col-span-1 h-56"
     />
-    <RedirectionBanner
+    <BaseRedirectionBanner
       link="/"
       header="Need help?"
       :background-image="backgroundImage"
