@@ -6,7 +6,7 @@ import ArrowRight from '~/assets/icons/arrow-right.svg?skipsvgo';
 
 const props = withDefaults(
   defineProps<{
-    variant?: 'fill' | 'outline' | 'text';
+    variant?: 'fill' | 'outline' | 'text' | 'content';
     size?: 'medium' | 'big';
     shape?: 'regular' | 'round' | 'square';
     to?: RouteLocationRaw | null;
@@ -76,6 +76,10 @@ const iconFill = computed(() => {
 }
 .button--outline {
   @apply border-blue-200;
+}
+
+.button--content {
+  @apply w-fit h-fit bg-transparent border-none;
 }
 
 .button--round {
