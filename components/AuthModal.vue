@@ -18,81 +18,33 @@
         signing up!
       </template>
     </template>
-    <template
-      v-if="authStep !== 'signup-confirmation'"
-      #content
-    >
-      <BaseInput
-        v-if="authStep === 'signup'"
-        id="name"
-        v-model="formData.name"
-        type="text"
-        label="Name"
-        placeholder="Jim Zepp"
+    <template #content>
+      <LoginForm
+        v-if="authStep === 'login'"
+        @submit-login="submitAuth"
       />
-      <BaseInput
-        id="email"
-        v-model="formData.email"
-        type="email"
-        label="E-mail address"
-        placeholder="ilovezeppelins@gmail.com"
+      <SignupForm
+        v-else-if="authStep === 'signup'"
+        @submit-signup="submitAuth"
       />
-      <BaseInput
-        id="password"
-        v-model="formData.password"
-        type="password"
-        label="Password"
-        placeholder="Something secret"
-      />
-      <BaseInput
-        v-if="authStep === 'signup'"
-        id="password"
-        v-model="formData.passwordConfirm"
-        type="password"
-        label="Password confirmation"
-        placeholder="Something secret, second time!"
-      />
-      <div
-        class="flex flex-col items-center justify-center border-t border-grey border-gray-300 mt-5"
-      >
-        <BaseButton
-          class="w-40 my-3"
-          @click="submitAuth"
-        >
-          {{ authStep === 'login' ? 'Sign in' : 'Sign up' }}
-        </BaseButton>
-        <span class="text-sm">
-          {{ authStep === 'login' ? `Don't` : 'Already' }} have an account?
-          <BaseButton
-            variant="text"
-            class="text-blue-200"
-            @click="switchAuthStep"
-          >
-            {{ authStep === 'login' ? 'Sign up' : 'Sign in' }}
-          </BaseButton>
+      <template v-else>
+        <span>
+          An email will be sent to
+          <strong v-if="formData.email">
+            {{ formData.email }}
+          </strong>
+          <template v-else>your address</template>
+          with a confirmation link. Click it to activate your account!
         </span>
-      </div>
-    </template>
-    <template
-      v-else
-      #content
-    >
-      <span>
-        An email will be sent to
-        <strong v-if="formData.email">
-          {{ formData.email }}
-        </strong>
-        <template v-else>your address</template>
-        with a confirmation link. Click it to activate your account!
-      </span>
-      <div class="flex justify-center mt-5">
-        <BaseButton
-          class="w-40"
-          @click="userCloseModal"
-        >
-          Okay, got it!
-        </BaseButton>
-      </div>
+        <div class="flex justify-center mt-5">
+          <BaseButton
+            class="w-40"
+            @click="userCloseModal"
+          >
+            Okay, got it!
+          </BaseButton>
+        </div>
+      </template>
     </template>
   </BaseModal>
 </template>
@@ -104,29 +56,20 @@ const { isLoading: isLoginLoading, mutate: login } = useUserLogin();
 
 const isLoading = computed(() => isSignupLoading.value || isLoginLoading.value);
 
-function userCloseModal() {
+const userCloseModal = () => {
   if (!isLoading.value) hide();
-}
+};
 
-function switchAuthStep() {
-  if (authStep.value === 'login') {
-    authStep.value = 'signup';
-  } else {
-    authStep.value = 'login';
-  }
-}
-
-function showConfirmationStep() {
+const showConfirmationStep = () => {
   authStep.value = 'signup-confirmation';
-}
+};
 
-function submitAuth() {
+const submitAuth = () => {
+  const { email, password, name } = formData.value;
   if (authStep.value === 'signup') {
-    const { email, password, name } = formData.value;
     signup({ email, password, name }, { onSuccess: showConfirmationStep });
   } else {
-    const { email, password } = formData.value;
     login({ email, password }, { onSuccess: hide });
   }
-}
+};
 </script>
