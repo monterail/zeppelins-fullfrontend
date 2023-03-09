@@ -38,16 +38,16 @@
               v-loading="isLoading"
               class="w-full relative max-w-md transform overflow-hidden rounded-2xl bg-white p-5 text-left align-middle shadow-xl transition-all"
             >
-              <button
+              <BaseButton
                 class="absolute right-4 top-4"
-                type="button"
+                variant="content"
                 @click="$emit('close')"
               >
                 <img
                   src="/close-icon.svg"
                   alt="close icon"
                 />
-              </button>
+              </BaseButton>
               <DialogTitle
                 as="h3"
                 class="text-4xl leading-tight font-medium text-gray-900 max-w-xs px-3 mx-auto text-center"
