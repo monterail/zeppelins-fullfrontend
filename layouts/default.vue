@@ -1,7 +1,7 @@
 <template>
-  <Header />
+  <LayoutHeader />
   <main class="w-max-content-w mx-auto">
     <slot />
   </main>
-  <Footer />
+  <LayoutFooter />
 </template>
