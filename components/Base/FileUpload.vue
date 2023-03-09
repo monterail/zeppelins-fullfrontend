@@ -1,23 +1,30 @@
 <template>
-  <div class="main">
-    <div class="w-full bg-gray-100 border-[2px] border-dashed h-20 rounded-3xl">
+  <div>
+    <label
+      class="flex flex-col items-center justify-center w-full bg-gray-100 border-[2px] border-dashed h-20 rounded-3xl"
+      :accept="accept"
+      draggable="true"
+      @dragstart="handleDragStart"
+      @dragenter="handleDragEnter"
+      @dragleave="handleDragLeave"
+      @dragover="handleDragOver"
+      @drop="handleDrop"
+      @change="handleChange"
+    >
+      <slot v-if="!selectedFile" />
+      <p
+        v-else
+        class="text-xs"
+      >
+        {{ selectedFile.name }}
+      </p>
       <input
-        id="fileInput"
+        ref="fileInput"
         type="file"
         name="file"
         class="hidden"
-        @change="handleChange"
       />
-      <label
-        for="fileInput"
-        class="file-label w-full h-full flex justify-center items-center cursor-pointer"
-      >
-        <div v-if="file">{{ file.name }}</div>
-        <div v-else>
-          <slot />
-        </div>
-      </label>
-    </div>
+    </label>
   </div>
 </template>
 
@@ -33,15 +40,26 @@ withDefaults(
 
 const emit = defineEmits(['update:file']);
 
-const file = ref();
+const fileInput = ref();
+const selectedFile = ref<File | undefined>();
 
-const handleChange = (e: Event) => {
-  e.preventDefault();
-  const target = <HTMLInputElement>e.target;
-  if (target.files && target.files[0]) {
-    const incoming: File = target.files[0];
-    file.value = incoming;
-    emit('update:file', file.value);
+const handleDragStart = (event: DragEvent) => {
+  if (event.dataTransfer) event.dataTransfer.setData('text/plain', 'dragging');
+};
+const handleDragEnter = (event: DragEvent) => event.preventDefault();
+const handleDragLeave = (event: DragEvent) => event.preventDefault();
+const handleDragOver = (event: DragEvent) => event.preventDefault();
+const handleDrop = (event: DragEvent) => {
+  event.preventDefault();
+  if (event.dataTransfer) {
+    selectedFile.value = event.dataTransfer.files[0];
+    emit('update:file', selectedFile.value);
+  }
+};
+const handleChange = () => {
+  if (fileInput.value.files) {
+    selectedFile.value = fileInput.value.files[0];
+    emit('update:file', selectedFile.value);
   }
 };
 </script>
