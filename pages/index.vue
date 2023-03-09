@@ -39,7 +39,7 @@
       }"
       class="col-span-1 h-56"
     />
-    <ProductsList
+    <ProductList
       class="col-span-2 mt-14"
       title="Most popular"
       :zeppelins="zeppelins"
