@@ -43,7 +43,7 @@
                 variant="text"
                 @click="$emit('close')"
               >
-                <CloseIcon />
+                <CloseIcon class="hover:brightness-110 transition-all" />
               </BaseButton>
               <DialogTitle
                 as="h3"
