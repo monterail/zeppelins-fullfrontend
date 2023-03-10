@@ -40,7 +40,7 @@
             >
               <BaseButton
                 class="absolute right-4 top-4"
-                variant="content"
+                variant="text"
                 @click="$emit('close')"
               >
                 <CloseIcon />
