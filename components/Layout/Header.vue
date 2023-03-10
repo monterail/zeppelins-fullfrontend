@@ -10,7 +10,7 @@
         />
       </nuxt-link>
       <!-- temporary solution for showing user being logged in & sign out button -->
-      <span> {{ userData?.username }}</span>
+      <span> {{ userData?.profile_name }}</span>
       <BaseButton
         v-if="userData"
         variant="text"

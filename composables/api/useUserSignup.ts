@@ -4,6 +4,22 @@ import type { Database } from '~/types/generated-types';
 export const useUserSignup = () => {
   const client = useSupabaseClient<Database>();
 
+  const createUserProfile = async (id: string, username: string) => {
+    const userProfileData = {
+      id,
+      profile_name: username,
+    };
+
+    const { error: dbError } = await client
+      .from('profiles')
+      .insert(userProfileData);
+
+    if (dbError) {
+      console.error(dbError);
+      throw new Error(dbError.message);
+    }
+  };
+
   const result = useMutation(
     async (credentials: { email: string; password: string; name: string }) => {
       const { email, password, name } = credentials;
@@ -18,18 +34,8 @@ export const useUserSignup = () => {
         throw new Error(error.message);
       }
 
-      const userProfileData = {
-        id: user?.id,
-        username: name,
-      };
-
-      const { error: dbError } = await client
-        .from('test_profiles')
-        .insert(userProfileData);
-
-      if (dbError) {
-        console.error(dbError);
-        throw new Error(dbError.message);
+      if (user?.id) {
+        createUserProfile(user.id, name);
       }
 
       return user?.id;
