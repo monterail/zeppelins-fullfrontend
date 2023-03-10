@@ -43,10 +43,7 @@
                 variant="content"
                 @click="$emit('close')"
               >
-                <img
-                  src="/close-icon.svg"
-                  alt="close icon"
-                />
+                <CloseIcon />
               </BaseButton>
               <DialogTitle
                 as="h3"
@@ -73,6 +70,7 @@ import {
   DialogPanel,
   DialogTitle,
 } from '@headlessui/vue';
+import CloseIcon from '@/assets/icons/close-icon.svg?skipsvgo';
 
 defineProps<{
   isShown: boolean;
