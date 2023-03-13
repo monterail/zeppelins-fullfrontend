@@ -20,8 +20,9 @@
         arrow="right"
         :disabled="!formValid"
         @click="handleSubmit"
-        >Book</BaseButton
       >
+        Book
+      </BaseButton>
     </div>
   </div>
 </template>

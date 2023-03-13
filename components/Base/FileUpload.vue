@@ -8,7 +8,7 @@
       @dragenter="handleDragEnter"
       @dragleave="handleDragLeave"
       @dragover="handleDragOver"
-      @drop="handleDrop"
+      @drop.prevent="handleDrop"
       @change="handleChange"
     >
       <slot v-if="!selectedFile" />
@@ -50,7 +50,6 @@ const handleDragEnter = (event: DragEvent) => event.preventDefault();
 const handleDragLeave = (event: DragEvent) => event.preventDefault();
 const handleDragOver = (event: DragEvent) => event.preventDefault();
 const handleDrop = (event: DragEvent) => {
-  event.preventDefault();
   if (event.dataTransfer) {
     selectedFile.value = event.dataTransfer.files[0];
     emit('update:file', selectedFile.value);

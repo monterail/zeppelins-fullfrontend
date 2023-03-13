@@ -19,8 +19,9 @@
     <span
       v-if="option.detail"
       class="absolute top-3 right-5 text-xs font-bold"
-      >${{ option.detail }}</span
     >
+      ${{ option.detail }}
+    </span>
   </div>
 </template>
 
