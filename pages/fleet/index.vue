@@ -5,7 +5,7 @@
     <ul class="grid grid-cols-4 gap-10 mb-10">
       <li
         v-for="zeppelin in zeppelins"
-        :key="zeppelin.product_id"
+        :key="zeppelin.id"
       >
         <ProductTile :zeppelin="zeppelin" />
       </li>

@@ -16,9 +16,9 @@
         </h2>
         <hr class="border-gray-300 border mb-5" />
         <!-- TODO: awaiting MODEL fix -->
-        <!-- <p class="mb-5">
-          {{ zeppelin.description }}
-        </p> -->
+        <p class="mb-5">
+          {{ zeppelin.product_specifications.description }}
+        </p>
         <button class="bg-blue-200 text-white px-5 py-2 rounded-md mb-14">
           Book
         </button>

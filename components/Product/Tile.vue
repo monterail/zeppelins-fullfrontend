@@ -1,7 +1,7 @@
 <template>
   <nuxt-link
     class="group block hover:shadow-2 hover:bg-white transition-all duration-200"
-    :to="`/fleet/${zeppelin.product_id}`"
+    :to="`/fleet/${zeppelin.id}`"
   >
     <img
       class="rounded w-[260px] h-[260px] object-cover"

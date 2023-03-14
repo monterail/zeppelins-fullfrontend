@@ -11,15 +11,18 @@ export interface Database {
     Tables: {
       product_specifications: {
         Row: {
-          product_id: number;
+          description: string | null;
+          id: number;
           range: number | null;
         };
         Insert: {
-          product_id?: number;
+          description?: string | null;
+          id?: number;
           range?: number | null;
         };
         Update: {
-          product_id?: number;
+          description?: string | null;
+          id?: number;
           range?: number | null;
         };
       };
@@ -30,7 +33,7 @@ export interface Database {
           image: string | null;
           name: string | null;
           price: number | null;
-          product_id: number;
+          id: string;
         };
         Insert: {
           cabins?: number | null;
@@ -38,7 +41,7 @@ export interface Database {
           image?: string | null;
           name?: string | null;
           price?: number | null;
-          product_id?: number;
+          id: string;
         };
         Update: {
           cabins?: number | null;
@@ -46,7 +49,21 @@ export interface Database {
           image?: string | null;
           name?: string | null;
           price?: number | null;
-          product_id?: number;
+          id: string;
+        };
+      };
+      profiles: {
+        Row: {
+          id: string;
+          profile_name: string;
+        };
+        Insert: {
+          id: string;
+          profile_name: string;
+        };
+        Update: {
+          id?: string;
+          profile_name?: string;
         };
       };
     };

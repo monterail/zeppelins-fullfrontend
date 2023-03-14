@@ -10,7 +10,7 @@
       <ProductTile
         v-for="zep in mostPopular"
         v-else-if="mostPopular"
-        :key="zep.product_id"
+        :key="zep.id"
         :zeppelin="zep"
         class="w-1/4"
       />
