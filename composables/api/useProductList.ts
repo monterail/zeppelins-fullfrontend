@@ -7,7 +7,7 @@ export const useProductList = (count = Infinity) => {
   const result = useQuery(['productsList', count], async () => {
     const { data, error } = await client
       .from('products')
-      .select('*, product_specifications (range)')
+      .select('*, product_specifications (*)')
       .limit(count);
 
     if (error) {

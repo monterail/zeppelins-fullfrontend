@@ -16,7 +16,7 @@
     >
       <li
         v-for="zeppelin in zeppelins"
-        :key="zeppelin.product_id"
+        :key="zeppelin.id"
       >
         <ProductTile :zeppelin="zeppelin" />
       </li>
