@@ -70,7 +70,7 @@ const iconFill = computed(() => {
 
 <style scoped>
 .button {
-  @apply py-3.5 px-7  inline-flex items-center gap-x-3  rounded border border-solid text-sm font-medium hover:bg-gray-200 transition duration-150;
+  @apply py-3.5 px-7 inline-flex items-center justify-center gap-x-3 rounded border border-solid text-sm font-medium hover:bg-gray-200 transition duration-150;
 }
 
 .button--fill {
