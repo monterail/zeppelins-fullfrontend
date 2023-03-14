@@ -1,8 +1,8 @@
 <template>
   <RadioGroup
     v-if="options"
-    :model-value="option"
-    @update:model-value="(value) => emit('update:option', value)"
+    :model-value="selected"
+    @update:model-value="(value) => emit('update:selected', value)"
   >
     <RadioGroupLabel>
       <slot />
@@ -28,9 +28,9 @@ import { RadioGroup, RadioGroupLabel, RadioGroupOption } from '@headlessui/vue';
 import { RadioOption } from '~/types/radio-options';
 
 defineProps<{
-  option: RadioOption;
+  selected: RadioOption;
   options: RadioOption[];
 }>();
 
-const emit = defineEmits(['update:option']);
+const emit = defineEmits(['update:selected']);
 </script>

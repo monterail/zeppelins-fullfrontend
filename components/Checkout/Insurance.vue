@@ -2,10 +2,10 @@
   <div>
     <p class="mb-7 text-2xl">Insurance</p>
     <BaseRadioGroup
-      v-model:option="selectedInsurance"
+      v-model:selected="selectedInsurance"
       :options="insuranceOptions"
       :plans="insuranceOptions"
-      @update:option="$emit('update:insurance', $event)"
+      @update:selected="$emit('update:insurance', $event)"
     />
   </div>
 </template>
@@ -35,6 +35,6 @@ const insuranceOptions = ref([
   },
 ]);
 
-// This needs to be passed to rasio group, always first item of array
+// This needs to be passed to radio group, always first item of array
 const selectedInsurance = ref(insuranceOptions.value[0]);
 </script>

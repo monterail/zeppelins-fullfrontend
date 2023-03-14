@@ -1,7 +1,7 @@
 <template>
   <div>
     <label
-      class="flex flex-col items-center justify-center w-full bg-gray-100 border-[2px] border-dashed h-20 rounded-3xl"
+      class="flex flex-col items-center justify-center w-full p-3 bg-gray-100 border-[2px] border-dashed h-20 rounded-3xl"
       :accept="accept"
       draggable="true"
       @dragstart="handleDragStart"
@@ -23,6 +23,7 @@
         type="file"
         name="file"
         class="hidden"
+        :accept="accept"
       />
     </label>
   </div>

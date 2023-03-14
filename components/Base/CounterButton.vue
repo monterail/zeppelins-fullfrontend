@@ -27,5 +27,5 @@ const handleClick = () => {
 
 const incrementCounter = () => emit('update:counter', props.counter + 1);
 const decrementCounter = () =>
-  emit('update:counter', props.counter > 0 ? props.counter - 1 : props.counter);
+  emit('update:counter', props.counter > 1 ? props.counter - 1 : props.counter);
 </script>
