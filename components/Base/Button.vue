@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import type { RouteLocationRaw } from 'vue-router';
 import ArrowLeft from '~/assets/icons/arrow-left.svg?skipsvgo';
 import ArrowRight from '~/assets/icons/arrow-right.svg?skipsvgo';
@@ -23,11 +22,13 @@ const props = withDefaults(
   },
 );
 
+defineEmits(['click']);
+
 const buttonLookVariants = ['fill', 'outline'];
 
 const componentType = computed(() => {
   if (props.href) return 'a';
-  if (props.to) return 'nuxt-link';
+  if (props.to) return 'NuxtLink';
   return 'button';
 });
 
@@ -53,6 +54,7 @@ const iconFill = computed(() => {
     :class="styleClasses"
     :href="props.href"
     :to="props.to"
+    @click="$emit('click', $event)"
   >
     <ArrowLeft
       v-if="props.arrow === 'left'"
