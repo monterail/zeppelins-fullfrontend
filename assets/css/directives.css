@@ -1,7 +1,11 @@
 .v-loading {
-  @apply relative opacity-60 pointer-events-none select-none overflow-hidden min-h-[30px] min-w-[30px];
+  @apply relative pointer-events-none select-none overflow-hidden min-h-[30px] min-w-[30px];
+}
+
+.v-loading::before {
+  @apply content-[''] absolute top-1/2 left-1/2 -mt-2 -ml-2 z-50 w-4 h-4 border-2 rounded-full animate-[spin_600ms_linear_infinite] border-black border-t-transparent;
 }
 
 .v-loading::after {
-  @apply content-[''] absolute top-1/2 left-1/2 -mt-2 -ml-2 z-20 w-4 h-4 border-2 rounded-full animate-[spin_600ms_linear_infinite] border-black border-t-transparent;
+  @apply content-[''] bg-white w-full h-full absolute top-0 left-0 z-40 opacity-60;
 }
