@@ -42,7 +42,7 @@
         </li>
       </ul>
     </div>
-    <ProductsList
+    <ProductList
       v-if="zeppelins"
       :is-loading="isLoadingPopular"
       title="Others from our fleet"
