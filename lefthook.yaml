@@ -2,6 +2,6 @@ pre-commit:
   parallel: true
   commands:
     eslint:
-      run: yarn eslint --ext .ts,.js,.vue --fix {staged_files} && git add {staged_files}
+      run: yarn lint-fix
     format:
-      run: yarn prettier --ignore-unknown --ignore-path .gitignore {staged_files} && git add {staged_files}
+      run: yarn format-fix
