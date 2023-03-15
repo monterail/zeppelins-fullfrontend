@@ -3,7 +3,7 @@
     <div class="mb-10 mt-7 text-xs">
       Category / <span class="font-semibold">{{ zeppelin.name }}</span>
     </div>
-    <div class="grid grid-cols-2 gap-x-16 gap-y-5 mb-44">
+    <div class="mb-44 grid grid-cols-2 gap-x-16 gap-y-5">
       <img
         :src="zeppelin.image || '~/assets/images/deafult_airship.JPG'"
         :alt="zeppelin.name || 'Default zeppelin image'"
@@ -14,12 +14,12 @@
         <h2 class="mb-2 font-normal">
           From <span class="font-bold">${{ zeppelin.price }}</span> per day
         </h2>
-        <hr class="border-gray-300 border mb-5" />
+        <hr class="mb-5 border border-gray-300" />
         <!-- TODO: awaiting MODEL fix -->
         <!-- <p class="mb-5">
           {{ zeppelin.description }}
         </p> -->
-        <button class="bg-blue-200 text-white px-5 py-2 rounded-md mb-14">
+        <button class="mb-14 rounded-md bg-blue-200 px-5 py-2 text-white">
           Book
         </button>
         <ul>
@@ -35,10 +35,10 @@
         <li
           v-for="perk in perks"
           :key="perk.id"
-          class="w-1/3 flex items-center gap-2"
+          class="flex w-1/3 items-center gap-2"
         >
           <component :is="perk.icon"></component>
-          <p class="text-xs my-auto">{{ perk.description }}</p>
+          <p class="my-auto text-xs">{{ perk.description }}</p>
         </li>
       </ul>
     </div>

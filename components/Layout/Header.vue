@@ -1,6 +1,6 @@
 <template>
   <header class="w-full">
-    <div class="w-max-content-w flex items-center relative h-12 mx-auto">
+    <div class="w-max-content-w relative mx-auto flex h-12 items-center">
       <nuxt-link to="/">
         <img
           src="/zeppy-logo.png"
@@ -14,7 +14,7 @@
       <BaseButton
         v-if="userData"
         variant="text"
-        class="ml-auto absolute right-0 top-1/2 transition-transform -translate-y-1/2 hover:font-bold"
+        class="absolute right-0 top-1/2 ml-auto -translate-y-1/2 transition-transform hover:font-bold"
         @click="signout"
       >
         Sign out
@@ -22,15 +22,15 @@
       <BaseButton
         v-else
         variant="text"
-        class="ml-auto absolute right-0 top-1/2 transition-transform -translate-y-1/2 hover:font-bold max-h-[17px]"
+        class="absolute right-0 top-1/2 ml-auto max-h-[17px] -translate-y-1/2 transition-transform hover:font-bold"
         @click="showAuthModal"
       >
         Sign in
       </BaseButton>
       <!------------------------->
     </div>
-    <menu class="flex h-20 w-max-content-w mx-auto">
-      <ul class="flex justify-between items-center w-[400px] mx-auto">
+    <menu class="w-max-content-w mx-auto flex h-20">
+      <ul class="mx-auto flex w-[400px] items-center justify-between">
         <li
           v-for="link in navLinks"
           :key="link.name"

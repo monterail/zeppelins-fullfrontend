@@ -1,7 +1,7 @@
 <template>
   <Disclosure v-slot="{ open }">
     <DisclosureButton
-      class="h-14 w-full border-b border-solid border-b-gray-200 text-sm font-normal leading-normal flex justify-between items-center"
+      class="flex h-14 w-full items-center justify-between border-b border-solid border-b-gray-200 text-sm font-normal leading-normal"
     >
       {{ info.title }}
       <PlusIcon
@@ -13,7 +13,7 @@
         class="inline-block"
       />
     </DisclosureButton>
-    <DisclosurePanel class="text-xs mt-3 mb-3">
+    <DisclosurePanel class="my-3 text-xs">
       {{ info.description }}
     </DisclosurePanel>
   </Disclosure>

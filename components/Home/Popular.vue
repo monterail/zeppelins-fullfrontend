@@ -1,6 +1,6 @@
 <template>
   <div class="mb-20">
-    <div class="flex justify-between items-center mb-11 mt-20">
+    <div class="mb-11 mt-20 flex items-center justify-between">
       <h2>Most popular</h2>
       <a href="/fleet">See more -></a>
     </div>
