@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full grid grid-cols-2 gap-y-7 gap-x-10 grid-rows-2 mt-8 mb-20">
+  <div class="mt-8 mb-20 grid w-full grid-cols-2 grid-rows-2 gap-y-7 gap-x-10">
     <BaseRedirectionBanner
       link="/"
       header="Best zeppelins"

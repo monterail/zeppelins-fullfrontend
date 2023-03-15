@@ -18,7 +18,7 @@
         leave-from="opacity-100"
         leave-to="opacity-0"
       >
-        <div class="fixed inset-0 bg-black bg-opacity-25" />
+        <div class="bg-opacity-/25 fixed inset-0 bg-black" />
       </TransitionChild>
 
       <div class="fixed inset-0 overflow-y-auto">
@@ -36,18 +36,18 @@
           >
             <DialogPanel
               v-loading="isLoading"
-              class="w-full relative max-w-md transform overflow-hidden rounded-2xl bg-white p-5 text-left align-middle shadow-xl transition-all"
+              class="relative w-full max-w-md overflow-hidden rounded-2xl bg-white p-5 text-left align-middle shadow-xl transition-all"
             >
               <BaseButton
                 class="absolute right-4 top-4"
                 variant="text"
                 @click="$emit('close')"
               >
-                <CloseIcon class="hover:brightness-110 transition-all" />
+                <CloseIcon class="transition-all hover:brightness-110" />
               </BaseButton>
               <DialogTitle
                 as="h3"
-                class="text-4xl leading-tight font-medium text-gray-900 max-w-xs px-3 mx-auto text-center"
+                class="mx-auto max-w-xs px-3 text-center text-4xl font-medium leading-tight text-gray-900"
               >
                 <slot name="title" />
               </DialogTitle>

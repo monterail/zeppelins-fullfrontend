@@ -1,16 +1,16 @@
 <template>
-  <div class="w-full relative">
+  <div class="relative w-full">
     <img
-      class="block w-full h-full object-cover object-center"
+      class="block h-full w-full object-cover object-center"
       :src="backgroundImage.path"
       :alt="backgroundImage.alt"
     />
     <div
-      class="absolute inset-0 w-full h-full py-10 px-20"
-      :class="{ 'bg-white bg-opacity-50': !!transparentBackground }"
+      class="absolute inset-0 h-full w-full py-10 px-20"
+      :class="{ 'bg-opacity-/50 bg-white': !!transparentBackground }"
     >
       <div
-        class="w-full h-full flex flex-col justify-between items-start font-500"
+        class="font-500 flex h-full w-full flex-col items-start justify-between"
       >
         <h2>{{ header }}</h2>
         <p class="text-sm">{{ subheader }}</p>

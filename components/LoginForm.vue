@@ -15,10 +15,10 @@
       placeholder="Something secret"
     />
     <div
-      class="flex flex-col items-center justify-center border-t border-grey border-gray-300 mt-5"
+      class="border-grey mt-5 flex flex-col items-center justify-center border-t border-gray-300"
     >
       <BaseButton
-        class="w-40 my-3"
+        class="my-3 w-40"
         @click.prevent="$emit('submitLogin')"
       >
         Sign in

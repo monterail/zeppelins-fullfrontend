@@ -2,7 +2,7 @@
   <div class="my-20">
     <h1 class="mb-20">Check out our fleet</h1>
 
-    <ul class="grid grid-cols-4 gap-10 mb-10">
+    <ul class="mb-10 grid grid-cols-4 gap-10">
       <li
         v-for="zeppelin in zeppelins"
         :key="zeppelin.id"
@@ -13,7 +13,7 @@
 
     <!-- TODO: Add Button component -->
     <button
-      class="block w-min-content-w mx-auto"
+      class="w-min-content-w mx-auto block"
       @click="loadMore"
     >
       See more

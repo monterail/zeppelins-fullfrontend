@@ -36,7 +36,7 @@
           <template v-else>your address</template>
           with a confirmation link. Click it to activate your account!
         </span>
-        <div class="flex justify-center mt-5">
+        <div class="mt-5 flex justify-center">
           <BaseButton
             class="w-40"
             @click="userCloseModal"

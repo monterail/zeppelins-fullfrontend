@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="flex justify-between items-center mb-11">
+    <div class="mb-11 flex items-center justify-between">
       <h3>{{ title }}</h3>
       <BaseButton
         variant="text"
