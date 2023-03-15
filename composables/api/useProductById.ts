@@ -7,8 +7,8 @@ export const useProductById = (id: string | string[]) => {
   const result = useQuery(['productById', id], async () => {
     const { data, error } = await client
       .from('products')
-      .select('*, product_specifications (range)')
-      .in('product_id', Array.isArray(id) ? id : [id]);
+      .select('*, product_specifications (*)')
+      .in('id', Array.isArray(id) ? id : [id]);
 
     if (error) {
       console.error(error);

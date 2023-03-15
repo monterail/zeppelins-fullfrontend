@@ -52,7 +52,9 @@ const props = defineProps<{
   order: Order;
 }>();
 
-const { data: product } = useProductById('1');
+const { data: product } = useProductById(
+  'cad189fe-7137-49da-984d-8eb8ac76deea',
+);
 
 const reservationCost = computed(() => {
   return props.order.days && product.value && product.value.price
