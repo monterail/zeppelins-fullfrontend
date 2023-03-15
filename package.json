@@ -8,6 +8,8 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint --ext .ts,.js,.vue .",
     "lint-fix": "eslint --ext .ts,.js,.vue . --fix",
+    "format": "prettier --check --ignore-unknown --ignore-path .gitignore .",
+    "format-fix": "prettier --ignore-unknown --ignore-path .gitignore .",
     "typecheck": "nuxi typecheck",
     "types:get": "npx supabase gen types typescript --project-id hscidcpphgemdlaynpic --schema public > types/generated-types.ts"
   },
