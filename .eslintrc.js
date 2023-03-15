@@ -8,7 +8,11 @@ module.exports = {
   parserOptions: {
     parser: '@typescript-eslint/parser',
   },
-  extends: ['@nuxtjs/eslint-config-typescript', 'plugin:prettier/recommended'],
+  extends: [
+    '@nuxtjs/eslint-config-typescript',
+    'plugin:prettier/recommended',
+    'plugin:tailwindcss/recommended',
+  ],
   rules: {
     'vue/multi-word-component-names': 'off',
     'vue/no-multiple-template-root': 'off',
@@ -18,5 +22,6 @@ module.exports = {
         allow: ['warn', 'error'],
       },
     ],
+    'tailwindcss/no-custom-classname': ['off'],
   },
 };

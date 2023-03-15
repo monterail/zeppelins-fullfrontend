@@ -1,7 +1,7 @@
 <template>
   <footer class="w-full bg-gray-100 pt-14">
     <div class="w-max-content-w mx-auto">
-      <div class="grid grid-cols-4 mb-16 w-full">
+      <div class="mb-16 grid w-full grid-cols-4">
         <div>
           <p class="mb-5">Follow us</p>
           <p class="font-3 mb-5 font-bold">nn-nn-nn</p>
@@ -68,7 +68,7 @@
           :key="index"
           class="mb-5"
         >
-          <p class="mb-3 font-">{{ list.title }}</p>
+          <p class="font- mb-3">{{ list.title }}</p>
           <ul class="text-sm">
             <li
               v-for="(link, idx) in list.links"
@@ -81,7 +81,7 @@
         </div>
       </div>
       <p
-        class="w-full border-t border-1 border-gray-400 pt-5 pb-8 text-gray-400 text-sm"
+        class="border-1 w-full border-t border-gray-400 pt-5 pb-8 text-sm text-gray-400"
       >
         © Monterail, 2023
       </p>
