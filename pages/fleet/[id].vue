@@ -19,9 +19,13 @@
         <!-- <p class="mb-5">
           {{ zeppelin.description }}
         </p> -->
-        <button class="mb-14 rounded-md bg-blue-200 px-5 py-2 text-white">
+
+        <BaseButton
+          href="/checkout"
+          class="w-[300px] flex justify-center"
+        >
           Book
-        </button>
+        </BaseButton>
         <ul>
           <BaseCollapsableItem
             v-for="item in listData"
@@ -42,7 +46,7 @@
         </li>
       </ul>
     </div>
-    <ProductsList
+    <ProductList
       v-if="zeppelins"
       :is-loading="isLoadingPopular"
       title="Others from our fleet"
