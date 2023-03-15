@@ -16,7 +16,7 @@
         </h2>
         <hr class="border-gray-300 border mb-5" />
         <p class="mb-5">
-          {{ zeppelin.product_specifications.description }}
+          {{ zeppelin.description }}
         </p>
         <BaseButton
           class="bg-blue-200 text-white px-5 py-2 rounded-md mb-14"
