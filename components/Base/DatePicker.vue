@@ -3,13 +3,13 @@
     :for="name"
     class="inline-block min-w-[250px]"
   >
-    <slot class="block mb-7" />
+    <slot class="mb-7 block" />
     <input
       :id="`date-picker__${name}`"
       type="date"
       :name="name"
       :value="currentDate"
-      class="block p-3 border rounded border-gray-300 text-xs w-full max-w-md"
+      class="block w-full max-w-md rounded border border-gray-300 p-3 text-xs"
       @change="handleChange"
     />
   </label>

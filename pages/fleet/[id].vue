@@ -14,12 +14,12 @@
         <h2 class="mb-2 font-normal">
           From <span class="font-bold">${{ zeppelin.price }}</span> per day
         </h2>
-        <hr class="border-gray-300 border mb-5" />
+        <hr class="mb-5 border border-gray-300" />
         <p class="mb-5">
           {{ zeppelin.description }}
         </p>
         <BaseButton
-          class="bg-blue-200 text-white px-5 py-2 rounded-md mb-14"
+          class="mb-14 rounded-md bg-blue-200 px-5 py-2 text-white"
           href="/checkout"
         >
           Book
