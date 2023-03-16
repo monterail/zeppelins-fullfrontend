@@ -1,7 +1,7 @@
 <template>
   <div>
     <label
-      class="flex flex-col items-center justify-center w-full p-3 bg-gray-100 border-[2px] border-dashed h-20 rounded-3xl"
+      class="flex h-20 w-full flex-col items-center justify-center rounded-3xl border-[2px] border-dashed bg-gray-100 p-3"
       :accept="accept"
       draggable="true"
       @dragstart="handleDragStart"
@@ -30,7 +30,7 @@
 </template>
 
 <script setup lang="ts">
-withDefaults(
+const props = withDefaults(
   defineProps<{
     accept?: string;
   }>(),
@@ -52,8 +52,12 @@ const handleDragLeave = (event: DragEvent) => event.preventDefault();
 const handleDragOver = (event: DragEvent) => event.preventDefault();
 const handleDrop = (event: DragEvent) => {
   if (event.dataTransfer) {
-    selectedFile.value = event.dataTransfer.files[0];
-    emit('update:file', selectedFile.value);
+    const acceptedList = props.accept.split(',');
+    const loadFile = event.dataTransfer.files[0];
+    if (acceptedList.some((i) => loadFile.name.includes(i))) {
+      selectedFile.value = loadFile;
+      emit('update:file', selectedFile.value);
+    }
   }
 };
 const handleChange = () => {

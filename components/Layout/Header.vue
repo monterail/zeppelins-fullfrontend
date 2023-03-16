@@ -36,12 +36,13 @@
           :key="link.name"
           class="block"
         >
-          <nuxt-link
+          <BaseButton
             :to="link.href"
             class="hover:font-bold"
+            variant="text"
           >
             {{ link.name }}
-          </nuxt-link>
+          </BaseButton>
         </li>
       </ul>
     </menu>
