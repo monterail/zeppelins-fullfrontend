@@ -1,6 +1,6 @@
 <template>
   <button
-    class="h-6 w-6 rounded-full flex items-center justify-center bg-gray-200"
+    class="flex h-6 w-6 items-center justify-center rounded-full bg-gray-200"
     @click="handleClick"
   >
     <PlusIcon v-if="isPlusButton" />

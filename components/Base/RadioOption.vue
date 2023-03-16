@@ -1,15 +1,15 @@
 <template>
   <div
-    class="relative grid grid-cols-[60px_auto] w-full max-w-lg border border-blue-200 rounded cursor-pointer"
+    class="relative grid w-full max-w-lg cursor-pointer grid-cols-[60px_auto] rounded border border-blue-200"
   >
-    <div class="flex justify-center items-center">
+    <div class="flex items-center justify-center">
       <span
         v-if="checked"
-        class="relative block w-5 h-5 bg-blue-200 rounded-full after:absolute after:w-2 after:h-2 after:bg-white after:rounded-full after:top-[50%] after:left-[50%] after:translate-x-[-50%] after:translate-y-[-50%]"
+        class="relative block h-5 w-5 rounded-full bg-blue-200 after:absolute after:top-[50%] after:left-[50%] after:h-2 after:w-2 after:translate-x-[-50%] after:translate-y-[-50%] after:rounded-full after:bg-white"
       />
       <span
         v-else
-        class="block w-5 h-5 border border-blue-200 rounded-full"
+        class="block h-5 w-5 rounded-full border border-blue-200"
       />
     </div>
     <div class="flex flex-col px-5 py-3">
