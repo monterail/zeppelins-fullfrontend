@@ -11,42 +11,45 @@ export interface Database {
     Tables: {
       product_specifications: {
         Row: {
-          product_id: number;
+          cabins: number | null;
+          product_id: string;
           range: number | null;
         };
         Insert: {
-          product_id?: number;
+          cabins?: number | null;
+          product_id: string;
           range?: number | null;
         };
         Update: {
-          product_id?: number;
+          cabins?: number | null;
+          product_id?: string;
           range?: number | null;
         };
       };
       products: {
         Row: {
-          cabins: number | null;
           created_at: string | null;
+          description: string | null;
+          id: string;
           image: string | null;
           name: string | null;
           price: number | null;
-          product_id: number;
         };
         Insert: {
-          cabins?: number | null;
           created_at?: string | null;
+          description?: string | null;
+          id?: string;
           image?: string | null;
           name?: string | null;
           price?: number | null;
-          product_id?: number;
         };
         Update: {
-          cabins?: number | null;
           created_at?: string | null;
+          description?: string | null;
+          id?: string;
           image?: string | null;
           name?: string | null;
           price?: number | null;
-          product_id?: number;
         };
       };
     };

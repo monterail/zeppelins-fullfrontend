@@ -1,16 +1,18 @@
 export interface Product {
-  cabins?: number | null;
   created_at?: string | null;
+  description?: string | null;
+  id?: string;
   image?: string | null;
   name?: string | null;
   price?: number | null;
-  id?: string;
 }
 
 export interface ProductSpecifications {
-  product_id?: number;
+  cabins?: number | null;
+  product_id?: string | null;
   range?: number | null;
-  description?: string;
 }
 
-export interface FullProduct extends Product, ProductSpecifications {}
+export interface FullProduct extends Product {
+  product_specifications: ProductSpecifications;
+}
