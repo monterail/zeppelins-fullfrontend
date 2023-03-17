@@ -54,8 +54,10 @@ const formValid = computed(() => {
 
 const handleSubmit = (e: Event) => {
   e.preventDefault();
+  /* eslint-disable */
   formValid.value
     ? console.log('order', formData)
     : console.error('Please fill in the form correctly');
+  /* eslint-enable */
 };
 </script>
