@@ -1,6 +1,6 @@
 <template>
   <nuxt-link
-    class="group block hover:shadow-2 hover:bg-white transition-all duration-200"
+    class="hover:shadow-2 group block transition-all duration-200 hover:bg-white"
     :to="`/fleet/${zeppelin.id}`"
   >
     <img

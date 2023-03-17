@@ -13,7 +13,7 @@
       class="mb-12"
       @update:license="$emit('update:license', $event)"
     />
-    <hr class="w-full border border-gray-300 mb-12" />
+    <hr class="mb-12 w-full border border-gray-300" />
   </div>
 </template>
 

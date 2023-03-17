@@ -1,13 +1,13 @@
 <template>
-  <div class="w-full max-h-[405px] border border-gray-200 rounded-[5px] p-5">
+  <div class="max-h-[405px] w-full rounded-[5px] border border-gray-200 p-5">
     <h4>Order summary</h4>
     <div
       v-if="product"
-      class="flex mt-10"
+      class="mt-10 flex"
     >
       <img
         v-if="product.image && product.name"
-        class="w-[100px] h-[100px] mr-5 rounded-[4px]"
+        class="mr-5 h-[100px] w-[100px] rounded-[4px]"
         :src="product.image"
         :alt="product.name"
       />
@@ -19,7 +19,7 @@
     <ul class="mt-10">
       <li
         v-if="order.insurance"
-        class="w-full flex justify-between py-4 border-t border-t-gray-200"
+        class="flex w-full justify-between border-t border-t-gray-200 py-4"
       >
         <p v-if="order?.insurance?.title">
           {{ order.insurance.title }}
@@ -28,16 +28,16 @@
       </li>
       <li
         v-else
-        class="w-full flex justify-between py-4 border-t border-t-gray-200"
+        class="flex w-full justify-between border-t border-t-gray-200 py-4"
       >
         <p>No insurance</p>
         <p class="font-bold">$0</p>
       </li>
-      <li class="w-full flex justify-between py-4 border-t border-gray-300">
+      <li class="flex w-full justify-between border-t border-gray-300 py-4">
         <p>{{ order.days }} days</p>
         <p class="font-bold">${{ reservationCost }}</p>
       </li>
-      <li class="w-full flex justify-between py-4 border-t border-t-gray-200">
+      <li class="flex w-full justify-between border-t border-t-gray-200 py-4">
         <p>Total</p>
         <p class="font-bold">${{ total }}</p>
       </li>

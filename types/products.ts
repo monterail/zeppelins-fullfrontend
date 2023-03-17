@@ -1,16 +1,9 @@
-export interface Product {
-  cabins?: number | null;
-  created_at?: string | null;
-  image?: string | null;
-  name?: string | null;
-  price?: number | null;
-  id?: string;
-}
+import { Database } from '~/types/generated-types';
 
-export interface ProductSpecifications {
-  product_id?: number;
-  range?: number | null;
-  description?: string;
-}
+export type Product = Database['public']['Tables']['products']['Row'];
+export type ProductSpecifications =
+  Database['public']['Tables']['product_specifications']['Row'];
 
-export interface FullProduct extends Product, ProductSpecifications {}
+export interface FullProduct extends Product {
+  product_specifications: ProductSpecifications;
+}
