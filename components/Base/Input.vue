@@ -2,7 +2,7 @@
   <div class="my-4 flex flex-col">
     <label
       v-if="label"
-      class="mb-2"
+      class="mb-2 text-sm"
       :for="id"
     >
       {{ label }} {{ required ? '*' : '' }}
