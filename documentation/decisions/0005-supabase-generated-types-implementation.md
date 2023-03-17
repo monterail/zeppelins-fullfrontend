@@ -1,4 +1,4 @@
-# 5. SupaBase-generated-types-implementation
+# 5. Supabase-generated-types-implementation
 
 Date: 2023-03-17
 
@@ -22,7 +22,7 @@ import type { Database } from '~/types';
 const client = useSupabaseClient<Database>();
 ```
 
-On frontend application level we still need additional type / interface definitions to use in for example props. We can either define those from scratch or construct using already provided definitions from `SupaBase` making it more dynamic and less error prone.
+On frontend application level we still need additional type / interface definitions to use in for example props. We can either define those from scratch or construct using already provided definitions from `Supabase` making it more dynamic and less error prone.
 
 ## Decision
 
@@ -42,7 +42,7 @@ export interface FullProduct extends Product {
 
 ## Consequences
 
-Thanks to tying our definitions with ones generated from `SupaBase` we have seamless integration between data models on BE and typing on FE.
+Thanks to tying our definitions with ones generated from `Supabase` we have seamless integration between data models on BE and typing on FE.
 
 Full implementation example using `vueQuery` and inferring return types to prevent TS issues:
 
