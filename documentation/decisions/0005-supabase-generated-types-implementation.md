@@ -7,28 +7,28 @@ Date: 2023-03-17
 Accepted
 
 ## Context
+
 Superbase allows for automatic types generation using:
 
-``` bash
+```bash
 npx supabase gen types typescript --project-id <project-id> --schema <schema-name> > ~/types/generated-types.ts
 ```
 
 We can use them to determine types of data returned by `useSupabaseClient` like in example below:
 
-``` ts
+```ts
 import type { Database } from '~/types';
 
 const client = useSupabaseClient<Database>();
 ```
 
-On frontend application level we still need aditional type / interface definitions to use in for example props. We can either define those from scratch or construct using already provided definitions from `SupaBase` making it more dynamic and less error prone.
+On frontend application level we still need additional type / interface definitions to use in for example props. We can either define those from scratch or construct using already provided definitions from `SupaBase` making it more dynamic and less error prone.
 
 ## Decision
 
-We can implement type & interface definitinion in following manner:
+We can implement type & interface definition in following manner:
 
-
-``` ts
+```ts
 import { Database } from '~/types/generated-types';
 
 export type Product = Database['public']['Tables']['products']['Row'];
@@ -42,11 +42,11 @@ export interface FullProduct extends Product {
 
 ## Consequences
 
-Thanks to tying our definitiosn with ones generated from `SupaBase` we have seemless integration between data models on BE and typing on FE.
+Thanks to tying our definitions with ones generated from `SupaBase` we have seamless integration between data models on BE and typing on FE.
 
-Full impementation example using `vueQuery` and infering return types to prevent TS issues:
+Full implementation example using `vueQuery` and inferring return types to prevent TS issues:
 
-``` ts 
+```ts
 import { useQuery } from 'vue-query';
 import type { Database } from '~/types/generated-types';
 import type { FullProduct } from '~/types/products';
