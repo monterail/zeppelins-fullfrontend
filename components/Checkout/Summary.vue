@@ -13,7 +13,9 @@
       />
       <div>
         <p class="text">{{ product.name || 'Name' }}</p>
-        <p class="font-semibold">${{ product.price }}</p>
+        <p>
+          <span class="font-semibold">${{ product.price }}</span> per day
+        </p>
       </div>
     </div>
     <ul class="mt-10">
