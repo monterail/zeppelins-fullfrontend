@@ -19,7 +19,7 @@
           {{ zeppelin.description }}
         </p>
         <BaseButton
-          class="mb-14 rounded-md bg-blue-200 px-5 py-2 text-white"
+          class="h-[56px] w-[310px]"
           href="/checkout"
         >
           Book
