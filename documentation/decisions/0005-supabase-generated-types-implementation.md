@@ -8,7 +8,7 @@ Accepted
 
 ## Context
 
-Supebase allows for automatic types generation using:
+Supabase allows for automatic types generation using:
 
 ```bash
 npx supabase gen types typescript --project-id <project-id> --schema <schema-name> > ~/types/generated-types.ts
