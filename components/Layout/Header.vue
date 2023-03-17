@@ -10,6 +10,13 @@
         />
       </nuxt-link>
       <!-- temporary solution for showing user being logged in & sign out button -->
+      <BaseButton
+        variant="text"
+        class="absolute right-16 top-1/2 ml-auto -translate-y-1/2 transition-transform hover:font-bold"
+        @click="openProfile"
+      >
+        Profile
+      </BaseButton>
       <span> {{ userData?.profile_name }}</span>
       <BaseButton
         v-if="userData"
@@ -22,7 +29,7 @@
       <BaseButton
         v-else
         variant="text"
-        class="absolute right-0 top-1/2 ml-auto max-h-[17px] -translate-y-1/2 transition-transform hover:font-bold"
+        class="absolute right-0 top-1/2 ml-auto -translate-y-1/2 transition-transform hover:font-bold"
         @click="showAuthModal"
       >
         Sign in
@@ -55,7 +62,14 @@ const navLinks: Array<{ name: string; href: string }> = [
   { name: 'About us', href: '#' },
   { name: 'Contact us', href: '#' },
 ];
-
+const openProfile = () => {
+  navigateTo('/profile/bookings');
+  // if (userData) {
+  //   router.push('/profile');
+  // } else {
+  //   showAuthModal();
+  // }
+};
 const { show: showAuthModal } = useAuthModal();
 const { mutate: signout } = useUserSignout();
 const { data: userData } = useUserData();
