@@ -9,22 +9,14 @@
           class="mx-auto"
         />
       </nuxt-link>
-      <!-- temporary solution for showing user being logged in & sign out button -->
-      <BaseButton
-        variant="text"
-        class="absolute right-16 top-1/2 ml-auto -translate-y-1/2 transition-transform hover:font-bold"
-        @click="openProfile"
-      >
-        Profile
-      </BaseButton>
-      <span> {{ userData?.profile_name }}</span>
       <BaseButton
         v-if="userData"
         variant="text"
-        class="absolute right-0 top-1/2 ml-auto -translate-y-1/2 transition-transform hover:font-bold"
-        @click="signout"
+        class="absolute right-16 top-1/2 ml-auto flex -translate-y-1/2 items-center !gap-0.5 transition-transform hover:font-bold"
+        @click="openProfile"
       >
-        Sign out
+        <span>{{ userData?.profile_name }}</span>
+        <UserIcon />
       </BaseButton>
       <BaseButton
         v-else
@@ -56,6 +48,8 @@
 </template>
 
 <script lang="ts" setup>
+import UserIcon from '~/assets/icons/user.svg?skipsvgo';
+
 const navLinks: Array<{ name: string; href: string }> = [
   { name: 'Home', href: '/' },
   { name: 'Fleet', href: '/fleet' },
@@ -64,13 +58,7 @@ const navLinks: Array<{ name: string; href: string }> = [
 ];
 const openProfile = () => {
   navigateTo('/profile/bookings');
-  // if (userData) {
-  //   router.push('/profile');
-  // } else {
-  //   showAuthModal();
-  // }
 };
 const { show: showAuthModal } = useAuthModal();
-const { mutate: signout } = useUserSignout();
 const { data: userData } = useUserData();
 </script>
