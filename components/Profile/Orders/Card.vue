@@ -4,11 +4,9 @@
       <div
         v-for="(order, index) in orders"
         :key="order.id"
-        class="min-h-[100px] border-gray-300 pt-2.5"
+        class="min-h-[100px] border-gray-300 pt-2.5 first:pt-0 last:pb-0"
         :class="{
           'border-b pb-2.5': index !== orders.length - 1,
-          '!pt-0': index === 0,
-          '!pb-0': index === orders.length - 1,
         }"
       >
         <ProfileOrdersOrder :order="order" />
