@@ -35,8 +35,7 @@ const formData = ref({
 });
 
 const saveInformation = () => {
-  // eslint-disable-next-line no-console
-  console.log(formData.value);
+  console.warn(formData.value);
 };
 
 const handleChange = (event: File) => {
