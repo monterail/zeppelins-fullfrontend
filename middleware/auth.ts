@@ -1,6 +1,6 @@
-export default defineNuxtRouteMiddleware((to) => {
-  // TODO check for auth
-  if (to.query.auth === 'false') {
+export default defineNuxtRouteMiddleware(() => {
+  const user = useSupabaseUser();
+  if (!user.value) {
     return abortNavigation();
   }
 });
