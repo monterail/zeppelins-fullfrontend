@@ -54,6 +54,8 @@ const profileNavigation: Navigation[] = [
   },
 ];
 const logout = () => {
+  const { mutate: signout } = useUserSignout();
+  signout();
   navigateTo('/');
 };
 
