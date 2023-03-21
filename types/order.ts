@@ -9,7 +9,7 @@ export interface Order {
 
 export interface ProfileOrder {
   id: string;
-  title?: string | null;
+  title: string;
   image?: string | null;
   price?: number | null;
   date?: string | null;
