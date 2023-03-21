@@ -14,4 +14,8 @@ export default defineNuxtConfig({
   imports: {
     dirs: ['composables/api/**'],
   },
+  // EXPERIMENTAL: https://nitro.unjs.io/config/#routerules
+  routeRules: {
+    '/profile': { redirect: '/profile/bookings' },
+  },
 });

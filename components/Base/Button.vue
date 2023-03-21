@@ -1,3 +1,23 @@
+<template>
+  <component
+    :is="componentType"
+    :class="styleClasses"
+    :href="props.href"
+    :to="props.to"
+    @click="$emit('click', $event)"
+  >
+    <ArrowLeft
+      v-if="props.arrow === 'left'"
+      :class="iconFill"
+    />
+    <slot />
+    <ArrowRight
+      v-if="props.arrow === 'right'"
+      :class="iconFill"
+    />
+  </component>
+</template>
+
 <script setup lang="ts">
 import type { RouteLocationRaw } from 'vue-router';
 import ArrowLeft from '~/assets/icons/arrow-left.svg?skipsvgo';
@@ -48,29 +68,9 @@ const iconFill = computed(() => {
 });
 </script>
 
-<template>
-  <component
-    :is="componentType"
-    :class="styleClasses"
-    :href="props.href"
-    :to="props.to"
-    @click="$emit('click', $event)"
-  >
-    <ArrowLeft
-      v-if="props.arrow === 'left'"
-      :class="iconFill"
-    />
-    <slot />
-    <ArrowRight
-      v-if="props.arrow === 'right'"
-      :class="iconFill"
-    />
-  </component>
-</template>
-
 <style scoped>
 .button {
-  @apply py-3.5 px-7 inline-flex items-center justify-center gap-x-3 rounded border border-solid text-sm font-medium hover:bg-gray-200 transition duration-150;
+  @apply py-3.5 px-7 inline-flex items-center justify-center gap-x-3 rounded border border-solid text-sm font-medium hover:bg-gray-200 transition duration-150 cursor-pointer;
 }
 
 .button--fill {
@@ -89,7 +89,7 @@ const iconFill = computed(() => {
 }
 
 .button--text {
-  @apply inline-flex items-center gap-x-3 text-sm hover:underline transition duration-150;
+  @apply inline-flex items-center gap-x-3 text-sm hover:underline transition duration-150 cursor-pointer;
 }
 
 .button--big {

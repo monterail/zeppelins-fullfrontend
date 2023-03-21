@@ -6,3 +6,13 @@ export interface Order {
   insurance: RadioOption | null;
   license: File | null;
 }
+
+export interface ProfileOrder {
+  id: string;
+  title: string;
+  image?: string | null;
+  price?: number | null;
+  date?: string | null;
+  status?: string;
+  insurance?: string | null;
+}
