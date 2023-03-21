@@ -5,14 +5,13 @@
         <img
           src="/zeppy-logo.png"
           alt="Zappy Logo"
-          width="111"
-          class="mx-auto"
+          class="mx-auto w-[111px]"
         />
       </nuxt-link>
       <BaseButton
         v-if="userData"
         variant="text"
-        class="absolute right-16 top-1/2 ml-auto flex -translate-y-1/2 items-center !gap-0.5 transition-transform hover:font-bold"
+        class="absolute right-0 top-1/2 ml-auto flex -translate-y-1/2 items-center !gap-0.5 transition-transform hover:font-bold"
         @click="openProfile"
       >
         <span>{{ userData?.profile_name }}</span>
