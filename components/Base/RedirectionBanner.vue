@@ -7,7 +7,7 @@
     />
     <div
       class="absolute inset-0 h-full w-full py-10 px-20"
-      :class="{ 'bg-opacity-/50 bg-white': !!transparentBackground }"
+      :class="{ 'bg-white/50': !!transparentBackground }"
     >
       <div
         class="font-500 flex h-full w-full flex-col items-start justify-between"

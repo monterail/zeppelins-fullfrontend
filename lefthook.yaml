@@ -3,5 +3,3 @@ pre-commit:
   commands:
     eslint:
       run: yarn lint-fix
-    format:
-      run: yarn format-fix
