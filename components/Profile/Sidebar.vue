@@ -1,12 +1,11 @@
 <template>
   <div class="flex flex-col">
     <div
-      v-for="(nav, index) of profileNavigation"
+      v-for="nav of profileNavigation"
       :key="nav.href"
-      class="cursor-pointer border border-gray-300 py-3.5 px-5 hover:font-semibold"
+      class="cursor-pointer border border-b-0 border-gray-300 py-3.5 px-5 last:border-b hover:font-semibold"
       :class="{
         'border-r-2 !border-r-blue-200 font-semibold': $route.path === nav.href,
-        'border-b-0': index !== profileNavigation.length - 1,
       }"
       @click="onClick(nav)"
     >
@@ -37,6 +36,8 @@ interface Navigation {
   action?: string;
 }
 
+const { mutate: signout } = useUserSignout();
+
 const profileNavigation: Navigation[] = [
   {
     name: 'My Bookings',
@@ -54,7 +55,6 @@ const profileNavigation: Navigation[] = [
   },
 ];
 const logout = () => {
-  const { mutate: signout } = useUserSignout();
   signout();
   navigateTo('/');
 };
