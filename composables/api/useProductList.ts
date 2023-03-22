@@ -2,7 +2,7 @@ import { useQuery } from 'vue-query';
 import type { Database } from '~/types/generated-types';
 import type { FullProduct } from '~/types/products';
 
-export const useProductList = (count = Infinity) => {
+export const useProductList = (count = ref(Infinity)) => {
   const client = useSupabaseClient<Database>();
 
   const result = useQuery(
@@ -11,7 +11,7 @@ export const useProductList = (count = Infinity) => {
       const { data, error } = await client
         .from('products')
         .select('*, product_specifications (*)')
-        .limit(count);
+        .limit(count.value);
 
       if (error) {
         console.error(error);
@@ -19,6 +19,7 @@ export const useProductList = (count = Infinity) => {
       }
       return data as FullProduct[];
     },
+    { keepPreviousData: true },
   );
 
   onServerPrefetch(async () => {

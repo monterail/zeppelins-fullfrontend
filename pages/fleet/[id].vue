@@ -68,7 +68,7 @@ import ProductIcon3 from '~/assets/icons/product_icon_3.svg?skipsvgo';
 
 const id = useRoute().params.id || '';
 const { data: zeppelin, isLoading } = useProductById(id);
-const { data: zeppelins, isLoading: isLoadingPopular } = useProductList(4);
+const { data: zeppelins, isLoading: isLoadingPopular } = useProductList(ref(4));
 
 const perks = [
   { id: 1, icon: ProductIcon1, description: 'Benefits description' },

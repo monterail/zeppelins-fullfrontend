@@ -54,5 +54,5 @@ const backgroundImage = {
   alt: 'Zeppelin image',
 };
 
-const { data: zeppelins, isLoading } = useProductList(4);
+const { data: zeppelins, isLoading } = useProductList(ref(4));
 </script>
