@@ -25,7 +25,6 @@
       >
         Sign in
       </BaseButton>
-      <!------------------------->
     </div>
     <menu class="w-max-content-w mx-auto flex h-20">
       <ul class="mx-auto flex w-[400px] items-center justify-between">
@@ -34,12 +33,13 @@
           :key="link.name"
           class="block"
         >
-          <nuxt-link
+          <BaseButton
+            variant="text"
             :to="link.href"
-            class="hover:font-bold"
+            class="!text-base hover:font-bold"
           >
             {{ link.name }}
-          </nuxt-link>
+          </BaseButton>
         </li>
       </ul>
     </menu>
