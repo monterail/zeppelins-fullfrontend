@@ -15,13 +15,19 @@
     </ul>
 
     <div class="flex w-full justify-center">
-      <BaseButton
-        v-loading="isLoadingMore"
-        class="w-[223px]"
-        @click="loadMore"
-      >
-        See more
-      </BaseButton>
+      <ClientOnly>
+        <BaseButton
+          v-if="(canLoadMore || isLoadingMore) && !isLoading"
+          v-loading="isLoadingMore"
+          class="w-[223px]"
+          @click="loadMore"
+        >
+          See more
+        </BaseButton>
+        <template #fallback>
+          <BaseButton class="w-[223px]"> See more </BaseButton>
+        </template>
+      </ClientOnly>
     </div>
   </div>
 </template>
@@ -33,9 +39,18 @@ const loadMore = () => {
   displayedProductsCount.value += 4;
 };
 
+const canLoadMore = computed(() => {
+  if (maxAmount.value) {
+    return maxAmount.value > displayedProductsCount.value;
+  } else {
+    return true;
+  }
+});
+
 const {
   data: zeppelins,
   isLoading,
   isPreviousData: isLoadingMore,
+  maxAmount,
 } = useProductList(displayedProductsCount);
 </script>
