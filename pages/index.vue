@@ -1,20 +1,18 @@
 <template>
   <div class="mt-8 mb-20 grid w-full grid-cols-2 grid-rows-2 gap-y-7 gap-x-10">
     <BaseRedirectionBanner
-      link="/"
       header="Best zeppelins"
       subheader="Lowest prices"
       :background-image="backgroundImage"
       :cta="{
         title: 'Check out our flying boys',
-        href: '#',
+        to: '/fleet',
         variant: 'fill',
         arrow: 'right',
       }"
       class="col-span-2 h-56"
     />
     <BaseRedirectionBanner
-      link="/"
       header="Company with decades of history"
       :background-image="backgroundImage"
       transparent-background
@@ -27,12 +25,11 @@
       class="col-span-1 h-56"
     />
     <BaseRedirectionBanner
-      link="/"
       header="Need help?"
       :background-image="backgroundImage"
       transparent-background
       :cta="{
-        title: 'Read more',
+        title: 'Contact us',
         href: '#',
         variant: 'text',
         arrow: 'right',
@@ -54,5 +51,5 @@ const backgroundImage = {
   alt: 'Zeppelin image',
 };
 
-const { data: zeppelins, isLoading } = useProductList(4);
+const { data: zeppelins, isLoading } = useProductList(ref(4));
 </script>

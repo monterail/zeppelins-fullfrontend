@@ -48,7 +48,7 @@ const buttonLookVariants = ['fill', 'outline'];
 
 const componentType = computed(() => {
   if (props.href) return 'a';
-  if (props.to) return 'nuxt-link';
+  if (props.to) return 'router-link';
   return 'button';
 });
 
