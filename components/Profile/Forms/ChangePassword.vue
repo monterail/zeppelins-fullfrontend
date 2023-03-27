@@ -13,7 +13,7 @@
       />
       <BaseInput
         id="newPassword"
-        v-model="formData.password"
+        v-model="formData.newPassword"
         type="password"
         label="New password"
         placeholder="Enter your new password"
