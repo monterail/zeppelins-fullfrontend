@@ -9,7 +9,7 @@
         v-model="formData.email"
         type="email"
         label="New email address"
-        placeholder="Enter your new email address"
+        placeholder="ireallylovezeppelins@bigzepp.com"
       />
       <BaseButton
         v-loading="isUpdateLoading"
@@ -39,7 +39,7 @@
           class="w-40"
           @click="userCloseModal"
         >
-          Okay, got it!
+          Will do!
         </BaseButton>
       </div>
     </template>

@@ -1,8 +1,7 @@
 import { computed, ref } from 'vue';
 
-const shown = ref(false);
-
 export function useModal() {
+  const shown = ref(false);
   const isShown = computed(() => shown.value);
 
   const show = () => {

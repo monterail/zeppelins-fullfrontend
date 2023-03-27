@@ -1,12 +1,11 @@
 import { useMutation } from 'vue-query';
-import type { Database } from '~/types/generated-types';
 
 export const useUserUpdate = () => {
-  const client = useSupabaseClient<Database>();
+  const authClient = useSupabaseAuthClient();
 
   const result = useMutation(
     async (updateData: { email?: string; password?: string }) => {
-      const { error } = await client.auth.updateUser(updateData);
+      const { error } = await authClient.auth.updateUser(updateData);
 
       if (error) {
         console.error(error);
