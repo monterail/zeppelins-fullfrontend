@@ -6,16 +6,12 @@ export const useUserUpdate = () => {
 
   const result = useMutation(
     async (updateData: { email?: string; password?: string }) => {
-      console.warn('THE UPDATE DATA: ', updateData);
-
-      const { data, error } = await client.auth.updateUser(updateData);
+      const { error } = await client.auth.updateUser(updateData);
 
       if (error) {
         console.error(error);
         throw new Error(error.message);
       }
-
-      console.log(data);
     },
   );
 
