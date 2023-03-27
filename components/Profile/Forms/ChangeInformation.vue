@@ -16,7 +16,8 @@
         accept=".pdf,.doc,.docx,.odt,.jpg,.jpeg,.png,.bmp"
         @update:file="handleChange"
       >
-        Drag & drop your license scan here
+        Drag & drop <br />
+        your license scan here
       </BaseFileUpload>
       <BaseButton
         class="mt-5 w-40"
@@ -41,4 +42,8 @@ const saveInformation = () => {
 const handleChange = (event: File) => {
   formData.value.file = event;
 };
+
+const { data: userData } = useUserData();
+
+formData.value.name = userData.value?.profile_name || '';
 </script>

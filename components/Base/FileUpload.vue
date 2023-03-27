@@ -1,23 +1,38 @@
 <template>
   <div>
     <label
-      class="flex h-20 w-full flex-col items-center justify-center rounded-3xl border-[2px] border-dashed bg-gray-100 p-3"
       :accept="accept"
       draggable="true"
+      class="flex h-20 w-full flex-col items-center justify-center rounded-3xl border-[2px] border-dashed border-gray-500 bg-gray-200 p-3"
+      :class="{ '!bg-gray-300': isUploadDraggedOver }"
       @dragstart="handleDragStart"
-      @dragenter="handleDragEnter"
-      @dragleave="handleDragLeave"
-      @dragover="handleDragOver"
+      @dragenter.prevent="isUploadDraggedOver = true"
+      @dragleave.prevent="isUploadDraggedOver = false"
+      @dragover.prevent="isUploadDraggedOver = true"
       @drop.prevent="handleDrop"
       @change="handleChange"
     >
-      <slot v-if="!selectedFile" />
-      <p
-        v-else
-        class="text-xs"
+      <div
+        v-if="isWindowDragover || isUploadDraggedOver"
+        class="text-center text-sm font-bold"
       >
-        {{ selectedFile.name }}
-      </p>
+        Yes, drop here!
+      </div>
+      <div
+        v-else-if="!selectedFile"
+        class="text-center text-sm"
+      >
+        <slot />
+      </div>
+      <div
+        v-else
+        class="text-center text-sm"
+      >
+        <p>Selected file:</p>
+        <p class="font-bold">
+          {{ selectedFile.name }}
+        </p>
+      </div>
       <input
         ref="fileInput"
         type="file"
@@ -43,23 +58,39 @@ const emit = defineEmits(['update:file']);
 
 const fileInput = ref();
 const selectedFile = ref<File | undefined>();
+const isUploadDraggedOver = ref(false);
+const {
+  isWindowDragover,
+  addWindowDragoverEventListeners,
+  removeWindowDragoverEventListeners,
+} = useWindowDragover();
 
 const handleDragStart = (event: DragEvent) => {
+  isUploadDraggedOver.value = true;
   if (event.dataTransfer) event.dataTransfer.setData('text/plain', 'dragging');
 };
-const handleDragEnter = (event: DragEvent) => event.preventDefault();
-const handleDragLeave = (event: DragEvent) => event.preventDefault();
-const handleDragOver = (event: DragEvent) => event.preventDefault();
+
 const handleDrop = (event: DragEvent) => {
   if (event.dataTransfer) {
     selectedFile.value = event.dataTransfer.files[0];
     emit('update:file', selectedFile.value);
+    isUploadDraggedOver.value = false;
   }
 };
+
 const handleChange = () => {
   if (fileInput.value.files) {
     selectedFile.value = fileInput.value.files[0];
     emit('update:file', selectedFile.value);
+    isUploadDraggedOver.value = false;
   }
 };
+
+onMounted(() => {
+  addWindowDragoverEventListeners(window);
+});
+
+onUnmounted(() => {
+  removeWindowDragoverEventListeners(window);
+});
 </script>
