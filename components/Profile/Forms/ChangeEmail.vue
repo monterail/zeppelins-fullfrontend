@@ -12,6 +12,7 @@
         placeholder="Enter your new email address"
       />
       <BaseButton
+        v-loading="isUpdateLoading"
         class="mt-3 w-40"
         @click.prevent="saveInformation"
       >
@@ -22,11 +23,13 @@
 </template>
 
 <script setup lang="ts">
+const { isLoading: isUpdateLoading, mutate: updateUser } = useUserUpdate();
+
 const formData = ref({
   email: '',
 });
 
 const saveInformation = () => {
-  console.warn(formData.value);
+  updateUser(formData.value);
 };
 </script>
