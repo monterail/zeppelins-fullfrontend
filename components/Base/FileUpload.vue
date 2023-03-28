@@ -1,7 +1,7 @@
 <template>
   <div>
     <label
-      class="flex h-20 w-full flex-col items-center justify-center rounded-3xl border-[2px] border-dashed bg-gray-100 p-3"
+      :class="inputClasses"
       :accept="accept"
       draggable="true"
       @dragstart="handleDragStart"
@@ -11,12 +11,12 @@
       @drop.prevent="handleDrop"
       @change="handleChange"
     >
-      <slot v-if="!selectedFile" />
+      <slot v-if="!selectedFile && !isError" />
       <p
         v-else
         class="text-xs"
       >
-        {{ selectedFile.name }}
+        {{ inputMessage }}
       </p>
       <input
         ref="fileInput"
@@ -42,7 +42,31 @@ const props = withDefaults(
 const emit = defineEmits(['update:file']);
 
 const fileInput = ref();
+const isError = ref(false);
 const selectedFile = ref<File | undefined>();
+
+const inputClasses = computed(() => {
+  return isError.value ? 'input-error' : 'input-default';
+});
+const inputMessage = computed(() => {
+  return isError.value
+    ? 'Incorrect file type uploaded. Drop a correct file type.'
+    : selectedFile.value?.name;
+});
+
+const validateFileType = (loadFiles: FileList): File | undefined => {
+  const acceptedList = props.accept.split(',');
+  const loadFile = loadFiles[0];
+  if (
+    props.accept === '.*' ||
+    acceptedList.some((i) => loadFile.name.includes(i))
+  ) {
+    isError.value = false;
+    return loadFile;
+  } else {
+    isError.value = true;
+  }
+};
 
 const handleDragStart = (event: DragEvent) => {
   if (event.dataTransfer) event.dataTransfer.setData('text/plain', 'dragging');
@@ -52,18 +76,26 @@ const handleDragLeave = (event: DragEvent) => event.preventDefault();
 const handleDragOver = (event: DragEvent) => event.preventDefault();
 const handleDrop = (event: DragEvent) => {
   if (event.dataTransfer) {
-    const acceptedList = props.accept.split(',');
-    const loadFile = event.dataTransfer.files[0];
-    if (acceptedList.some((i) => loadFile.name.includes(i))) {
-      selectedFile.value = loadFile;
-      emit('update:file', selectedFile.value);
-    }
+    selectedFile.value = validateFileType(event.dataTransfer.files);
+    emit('update:file', selectedFile.value);
   }
 };
 const handleChange = () => {
   if (fileInput.value.files) {
-    selectedFile.value = fileInput.value.files[0];
-    emit('update:file', selectedFile.value);
+    selectedFile.value = validateFileType(fileInput.value.files);
+    if (props.accept === '.*') {
+      emit('update:file', selectedFile.value);
+    }
   }
 };
 </script>
+
+<style scoped>
+.input-default {
+  @apply flex h-20 w-full flex-col items-center justify-center rounded-3xl border-[2px] border-dashed bg-gray-100 p-3;
+}
+
+.input-error {
+  @apply flex h-20 w-full flex-col items-center justify-center rounded-3xl border-[2px] border-dashed bg-red-100 border-red-500 text-red-500 p-3;
+}
+</style>
