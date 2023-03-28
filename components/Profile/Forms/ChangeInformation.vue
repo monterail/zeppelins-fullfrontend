@@ -6,7 +6,7 @@
     >
       <BaseInput
         id="email"
-        v-model="formData.name"
+        v-model="formData.profileName"
         type="email"
         label="Name"
         placeholder="Enter your name"
@@ -20,6 +20,7 @@
         your license scan here
       </BaseFileUpload>
       <BaseButton
+        v-loading="isLoading || isRefetching"
         class="mt-5 w-40"
         @click.prevent="saveInformation"
       >
@@ -30,20 +31,21 @@
 </template>
 
 <script setup lang="ts">
+const { data: userProfile, refetch, isRefetching } = useUserProfile();
+const { mutateAsync: updateProfile, isLoading } = useUserProfileUpdate();
+
 const formData = ref({
-  name: '',
+  profileName: userProfile.value?.profile_name || '',
   file: null as File | null,
 });
 
-const saveInformation = () => {
-  console.warn(formData.value);
+const saveInformation = async () => {
+  const { profileName } = formData.value;
+  await updateProfile({ profile_name: profileName });
+  refetch.value();
 };
 
 const handleChange = (event: File) => {
   formData.value.file = event;
 };
-
-const { data: userProfile } = useUserProfile();
-
-formData.value.name = userProfile.value?.profile_name || '';
 </script>
