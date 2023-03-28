@@ -77,14 +77,17 @@ export interface Database {
       };
       profiles: {
         Row: {
+          current_license: string | null;
           id: string;
           profile_name: string | null;
         };
         Insert: {
+          current_license?: string | null;
           id: string;
           profile_name?: string | null;
         };
         Update: {
+          current_license?: string | null;
           id?: string;
           profile_name?: string | null;
         };

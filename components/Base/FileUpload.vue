@@ -3,17 +3,17 @@
     <label
       :accept="accept"
       draggable="true"
-      class="flex h-20 w-full flex-col items-center justify-center rounded-3xl border-[2px] border-dashed border-gray-500 bg-gray-200 p-3"
+      class="flex h-20 w-full cursor-pointer flex-col items-center justify-center rounded-3xl border-[2px] border-dashed border-gray-500 bg-gray-200 p-3 hover:bg-gray-300"
       :class="{ '!bg-gray-300': isUploadDraggedOver }"
-      @dragstart="handleDragStart"
+      @dragstart.prevent="handleDragStart"
       @dragenter.prevent="isUploadDraggedOver = true"
       @dragleave.prevent="isUploadDraggedOver = false"
       @dragover.prevent="isUploadDraggedOver = true"
       @drop.prevent="handleDrop"
-      @change="handleChange"
+      @change.prevent="handleChange"
     >
       <div
-        v-if="isWindowDragover || isUploadDraggedOver"
+        v-if="isUploadDraggedOver"
         class="text-center text-sm font-bold"
       >
         Yes, drop here!
@@ -59,11 +59,6 @@ const emit = defineEmits(['update:file']);
 const fileInput = ref();
 const selectedFile = ref<File | undefined>();
 const isUploadDraggedOver = ref(false);
-const {
-  isWindowDragover,
-  addWindowDragoverEventListeners,
-  removeWindowDragoverEventListeners,
-} = useWindowDragover();
 
 const handleDragStart = (event: DragEvent) => {
   isUploadDraggedOver.value = true;
@@ -85,12 +80,4 @@ const handleChange = () => {
     isUploadDraggedOver.value = false;
   }
 };
-
-onMounted(() => {
-  addWindowDragoverEventListeners(window);
-});
-
-onUnmounted(() => {
-  removeWindowDragoverEventListeners(window);
-});
 </script>

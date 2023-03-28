@@ -16,8 +16,16 @@
         accept=".pdf,.doc,.docx,.odt,.jpg,.jpeg,.png,.bmp"
         @update:file="handleChange"
       >
-        Drag & drop <br />
-        your license scan here
+        <template v-if="licenseName">
+          <p>Your current license:</p>
+          <p class="font-bold">
+            {{ licenseName }}
+          </p>
+        </template>
+        <template v-else>
+          Drag & drop <br />
+          your license scan here
+        </template>
       </BaseFileUpload>
       <BaseButton
         v-loading="isLoading || isRefetching"
@@ -34,14 +42,17 @@
 const { data: userProfile, refetch, isRefetching } = useUserProfile();
 const { mutateAsync: updateProfile, isLoading } = useUserProfileUpdate();
 
+const licenseName = ref(
+  userProfile.value?.current_license?.split('/').pop() || '',
+);
+
 const formData = ref({
   profileName: userProfile.value?.profile_name || '',
   file: null as File | null,
 });
 
 const saveInformation = async () => {
-  const { profileName } = formData.value;
-  await updateProfile({ profile_name: profileName });
+  await updateProfile(formData.value);
   refetch.value();
 };
 
