@@ -24,5 +24,6 @@ export const useProductById = (id: string | string[]) => {
   onServerPrefetch(async () => {
     await result.suspense();
   });
+
   return result;
 };
