@@ -43,7 +43,7 @@ const handleChange = (event: File) => {
   formData.value.file = event;
 };
 
-const { data: userData } = useUserData();
+const { data: userProfile } = useUserProfile();
 
-formData.value.name = userData.value?.profile_name || '';
+formData.value.name = userProfile.value?.profile_name || '';
 </script>
