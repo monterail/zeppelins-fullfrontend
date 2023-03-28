@@ -3,7 +3,7 @@
     <p class="mb-7 text-2xl">Insurance</p>
     <div v-if="isLoading">...</div>
     <BaseRadioGroup
-      v-else-if="insuranceOptions && selectedInsurance"
+      v-else-if="insuranceOptions"
       v-model:selected="selectedInsurance"
       :options="insuranceOptions"
       @update:selected="$emit('update:insurance', $event)"
