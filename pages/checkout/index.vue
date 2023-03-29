@@ -57,7 +57,7 @@ const formValid = computed(() => {
 const handleSubmit = (e: Event) => {
   e.preventDefault();
   if (formValid.value) {
-    console.log('order', formData);
+    console.warn('order', formData);
     router.push({ path: '/confirmation' });
   } else {
     console.error('Please fill in the form correctly');

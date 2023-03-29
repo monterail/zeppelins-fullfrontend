@@ -6,7 +6,8 @@
         variant="text"
         arrow="right"
         to="/fleet"
-        >See more
+      >
+        See more
       </BaseButton>
     </div>
 
