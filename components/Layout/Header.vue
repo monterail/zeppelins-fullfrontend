@@ -9,12 +9,12 @@
         />
       </nuxt-link>
       <BaseButton
-        v-if="userData"
+        v-if="userProfile"
         variant="text"
         class="absolute right-0 top-1/2 ml-auto flex -translate-y-1/2 items-center !gap-0.5 transition-transform hover:font-bold"
         @click="openProfile"
       >
-        <span>{{ userData?.profile_name }}</span>
+        <span>{{ userProfile?.profile_name }}</span>
         <UserIcon />
       </BaseButton>
       <BaseButton
@@ -59,5 +59,5 @@ const openProfile = () => {
   navigateTo('/profile/bookings');
 };
 const { show: showAuthModal } = useAuthModal();
-const { data: userData } = useUserData();
+const { data: userProfile } = useUserProfile();
 </script>

@@ -6,7 +6,7 @@
     >
       <BaseInput
         id="email"
-        v-model="formData.name"
+        v-model="formData.profileName"
         type="email"
         label="Name"
         placeholder="Enter your name"
@@ -16,9 +16,19 @@
         accept=".pdf,.doc,.docx,.odt,.jpg,.jpeg,.png,.bmp"
         @update:file="handleChange"
       >
-        Drag & drop your license scan here
+        <template v-if="licenseName">
+          <p>Your current license:</p>
+          <p class="font-bold">
+            {{ licenseName }}
+          </p>
+        </template>
+        <template v-else>
+          Drag & drop <br />
+          your license scan here
+        </template>
       </BaseFileUpload>
       <BaseButton
+        v-loading="isLoading || isRefetching"
         class="mt-5 w-40"
         @click.prevent="saveInformation"
       >
@@ -29,13 +39,21 @@
 </template>
 
 <script setup lang="ts">
+const { data: userProfile, refetch, isRefetching } = useUserProfile();
+const { mutateAsync: updateProfile, isLoading } = useUserProfileUpdate();
+
+const licenseName = ref(
+  userProfile.value?.current_license?.split('/').pop() || '',
+);
+
 const formData = ref({
-  name: '',
+  profileName: userProfile.value?.profile_name || '',
   file: null as File | null,
 });
 
-const saveInformation = () => {
-  console.warn(formData.value);
+const saveInformation = async () => {
+  await updateProfile(formData.value);
+  refetch.value();
 };
 
 const handleChange = (event: File) => {

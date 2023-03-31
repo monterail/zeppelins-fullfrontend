@@ -1,7 +1,7 @@
 import { useQuery } from 'vue-query';
 import type { Database } from '~/types/generated-types';
 
-export const useUserData = () => {
+export const useUserProfile = () => {
   const client = useSupabaseClient<Database>();
   const user = useSupabaseUser();
 
@@ -18,12 +18,12 @@ export const useUserData = () => {
     }
   };
 
-  const result = useQuery(['userData', user], async () => {
+  const result = useQuery(['userProfile', user], async () => {
     if (!user.value?.id) {
       return null;
     }
 
-    const { data: userData, error: dbError } = await client
+    const { data: userProfile, error: dbError } = await client
       .from('profiles')
       .select()
       .eq('id', user.value.id);
@@ -33,12 +33,12 @@ export const useUserData = () => {
       throw new Error(dbError.message);
     }
 
-    if (!userData || userData.length === 0) {
+    if (!userProfile || userProfile.length === 0) {
       userSignoutOnMissingProfile();
       return null;
     }
 
-    return userData[0];
+    return userProfile[0];
   });
 
   onServerPrefetch(async () => {

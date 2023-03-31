@@ -74,7 +74,7 @@ import CloseIcon from '@/assets/icons/close-icon.svg?skipsvgo';
 
 defineProps<{
   isShown: boolean;
-  isLoading: boolean;
+  isLoading?: boolean;
 }>();
 
 defineEmits<{

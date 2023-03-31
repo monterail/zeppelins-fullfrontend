@@ -1,23 +1,42 @@
 <template>
   <div>
     <label
-      :class="inputClasses"
       :accept="accept"
-      draggable="true"
-      @dragstart="handleDragStart"
-      @dragenter="handleDragEnter"
-      @dragleave="handleDragLeave"
-      @dragover="handleDragOver"
+      :class="inputClasses"
+      @dragstart.prevent="handleDragStart"
+      @dragenter.prevent="isUploadDraggedOver = true"
+      @dragleave.prevent="isUploadDraggedOver = false"
+      @dragover.prevent="isUploadDraggedOver = true"
       @drop.prevent="handleDrop"
-      @change="handleChange"
+      @change.prevent="handleChange"
     >
-      <slot v-if="!selectedFile && !isError" />
-      <p
-        v-else
-        class="text-xs"
+      <div
+        v-if="isUploadDraggedOver"
+        class="text-center text-sm font-bold"
       >
-        {{ inputMessage }}
-      </p>
+        Yes, drop here!
+      </div>
+      <div
+        v-else-if="isError"
+        class="text-center text-sm"
+      >
+        Incorrect file type provided.
+      </div>
+      <div
+        v-else-if="!selectedFile"
+        class="text-center text-sm"
+      >
+        <slot />
+      </div>
+      <div
+        v-else
+        class="text-center text-sm"
+      >
+        <p>Selected file:</p>
+        <p class="font-bold">
+          {{ selectedFile.name }}
+        </p>
+      </div>
       <input
         ref="fileInput"
         type="file"
@@ -44,14 +63,14 @@ const emit = defineEmits(['update:file']);
 const fileInput = ref();
 const isError = ref(false);
 const selectedFile = ref<File | undefined>();
+const isUploadDraggedOver = ref(false);
 
 const inputClasses = computed(() => {
-  return isError.value ? 'input-error' : 'input-default';
-});
-const inputMessage = computed(() => {
-  return isError.value
-    ? 'Incorrect file type uploaded. Drop a correct file type.'
-    : selectedFile.value?.name;
+  return [
+    'input',
+    { 'input-ondragover': isUploadDraggedOver.value },
+    { 'input-error': isError.value },
+  ];
 });
 
 const validateFileType = (loadFiles: FileList): File | undefined => {
@@ -69,33 +88,37 @@ const validateFileType = (loadFiles: FileList): File | undefined => {
 };
 
 const handleDragStart = (event: DragEvent) => {
+  isUploadDraggedOver.value = true;
   if (event.dataTransfer) event.dataTransfer.setData('text/plain', 'dragging');
 };
-const handleDragEnter = (event: DragEvent) => event.preventDefault();
-const handleDragLeave = (event: DragEvent) => event.preventDefault();
-const handleDragOver = (event: DragEvent) => event.preventDefault();
+
 const handleDrop = (event: DragEvent) => {
   if (event.dataTransfer) {
     selectedFile.value = validateFileType(event.dataTransfer.files);
     emit('update:file', selectedFile.value);
+    isUploadDraggedOver.value = false;
   }
 };
+
 const handleChange = () => {
   if (fileInput.value.files) {
     selectedFile.value = validateFileType(fileInput.value.files);
-    if (props.accept === '.*') {
-      emit('update:file', selectedFile.value);
-    }
+    emit('update:file', selectedFile.value);
+    isUploadDraggedOver.value = false;
   }
 };
 </script>
 
 <style scoped>
-.input-default {
+.input {
   @apply flex h-20 w-full flex-col items-center justify-center rounded-3xl border-[2px] border-dashed bg-gray-100 p-3;
 }
 
 .input-error {
-  @apply flex h-20 w-full flex-col items-center justify-center rounded-3xl border-[2px] border-dashed bg-red-100 border-red-500 text-red-500 p-3;
+  @apply bg-red-100 border-red-500 text-red-500;
+}
+
+.input-ondragover {
+  @apply !bg-gray-300;
 }
 </style>

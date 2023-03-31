@@ -9,6 +9,29 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      insurance: {
+        Row: {
+          created_at: string | null;
+          description: string | null;
+          detail: string | null;
+          id: string;
+          title: string | null;
+        };
+        Insert: {
+          created_at?: string | null;
+          description?: string | null;
+          detail?: string | null;
+          id?: string;
+          title?: string | null;
+        };
+        Update: {
+          created_at?: string | null;
+          description?: string | null;
+          detail?: string | null;
+          id?: string;
+          title?: string | null;
+        };
+      };
       product_specifications: {
         Row: {
           cabins: number | null;
@@ -50,6 +73,23 @@ export interface Database {
           image?: string | null;
           name?: string | null;
           price?: number | null;
+        };
+      };
+      profiles: {
+        Row: {
+          current_license: string | null;
+          id: string;
+          profile_name: string | null;
+        };
+        Insert: {
+          current_license?: string | null;
+          id: string;
+          profile_name?: string | null;
+        };
+        Update: {
+          current_license?: string | null;
+          id?: string;
+          profile_name?: string | null;
         };
       };
     };
