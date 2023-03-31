@@ -38,6 +38,7 @@
         name="file"
         class="hidden"
         :accept="accept"
+        :disabled="disabled"
       />
     </label>
   </div>
@@ -47,9 +48,11 @@
 withDefaults(
   defineProps<{
     accept?: string;
+    disabled?: boolean;
   }>(),
   {
     accept: '.*',
+    disabled: false,
   },
 );
 

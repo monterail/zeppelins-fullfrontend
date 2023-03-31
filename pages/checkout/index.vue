@@ -31,6 +31,13 @@
 import { Order } from '~/types/order';
 import { RadioOption } from '~/types/radio-options';
 
+const { data: userProfile } = useUserProfile();
+
+const hasLicense = computed(() => {
+  const currentLicense = userProfile.value?.current_license?.split('/')[1];
+  return currentLicense || null;
+});
+
 const formData: Order = reactive({
   date: null,
   days: 1,
@@ -47,7 +54,7 @@ const formValid = computed(() => {
   return !!(
     formData.date &&
     formData.days &&
-    formData.license &&
+    (hasLicense || formData.license) &&
     formData.insurance
   );
 });
