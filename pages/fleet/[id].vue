@@ -34,7 +34,7 @@
           </p>
           <BaseButton
             class="mb-14 w-[309px] rounded-md bg-blue-200 px-5 py-2 text-white"
-            href="/checkout"
+            @click="handleBook"
           >
             Book
           </BaseButton>
@@ -66,6 +66,17 @@ import ProductIcon3 from '~/assets/icons/product_icon_3.svg?skipsvgo';
 const id = useRoute().params.id || '';
 const { data: zeppelin, isLoading } = useProductById(id);
 const { data: zeppelins, isLoading: isLoadingPopular } = useProductList(ref(4));
+const { show: showAuthModal } = useAuthModal();
+const { data: userProfile } = useUserProfile();
+
+const handleBook = () => {
+  if (userProfile.value) {
+    navigateTo('/checkout');
+  } else {
+    showAuthModal();
+    // TODO handle redirect to /checkout after login
+  }
+};
 
 const perks = [
   { id: 1, icon: ProductIcon1, description: 'Benefits description' },
