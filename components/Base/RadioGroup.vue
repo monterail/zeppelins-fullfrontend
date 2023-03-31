@@ -31,7 +31,7 @@ import { RadioOption } from '~/types/radio-options';
 
 defineProps<{
   selected?: RadioOption | any;
-  options: RadioOption[];
+  options: RadioOption[] | any;
 }>();
 
 const emit = defineEmits(['update:selected']);

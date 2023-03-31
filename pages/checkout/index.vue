@@ -6,7 +6,6 @@
       @update:days="handleDays"
       @update:insurance="handleInsurance"
       @update:license="handleLicense"
-      @submit="handleSubmit"
     />
     <CheckoutSummary :order="formData" />
     <div class="flex justify-between">
@@ -19,7 +18,7 @@
       <BaseButton
         arrow="right"
         :disabled="!formValid"
-        @click="handleSubmit"
+        @click.prevent="handleSubmit"
       >
         Book
       </BaseButton>
@@ -32,6 +31,9 @@ import { Order } from '~/types/order';
 import { RadioOption } from '~/types/radio-options';
 
 const { data: userProfile } = useUserProfile();
+const { mutate: updateLicense } = useUserProfileUpdate();
+const { mutate: insertReservation, isSuccess: reservationSuccess } =
+  useInsertReservation();
 
 const hasLicense = computed(() => {
   const currentLicense = userProfile.value?.current_license?.split('/')[1];
@@ -39,6 +41,7 @@ const hasLicense = computed(() => {
 });
 
 const formData: Order = reactive({
+  userId: userProfile.value?.id || null,
   date: null,
   days: 1,
   license: null,
@@ -52,6 +55,7 @@ const handleLicense = (e: File) => (formData.license = e);
 
 const formValid = computed(() => {
   return !!(
+    formData.userId &&
     formData.date &&
     formData.days &&
     (hasLicense || formData.license) &&
@@ -59,10 +63,20 @@ const formValid = computed(() => {
   );
 });
 
-const handleSubmit = (e: Event) => {
-  e.preventDefault();
-  formValid.value
-    ? console.warn('order', formData)
-    : console.error('Please fill in the form correctly');
+const handleSubmit = async () => {
+  if (formValid.value) {
+    const orderData = { ...formData, insurance: formData.insurance?.id };
+    // TODO: handle license upload / change
+    if (formData.license?.name)
+      await updateLicense({
+        profileName: userProfile.value?.id,
+        file: formData.license,
+      });
+    // TODO: handle reservation upload
+    await insertReservation(orderData);
+    if (reservationSuccess) return navigateTo('/confirmation');
+  } else {
+    console.error('Please fill in the form correctly');
+  }
 };
 </script>

@@ -1,6 +1,7 @@
 import type { RadioOption } from '~/types/radio-options';
 
 export interface Order {
+  userId: string | null;
   date: string | null;
   days: number | null;
   insurance: RadioOption | null;
