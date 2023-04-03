@@ -74,7 +74,6 @@ const handleBook = () => {
     navigateTo('/checkout');
   } else {
     showAuthModal();
-    // TODO handle redirect to /checkout after login
   }
 };
 
