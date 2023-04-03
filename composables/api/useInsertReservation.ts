@@ -8,11 +8,13 @@ export const useInsertReservation = () => {
   const result = useMutation(async (payload: PostingOrder) => {
     const { error, status } = await client.from('reservations').insert([
       {
-        user_id: payload.userId,
+        user_id: payload.user_id,
         date: payload.date,
-        duration: payload.days,
+        duration: payload.duration,
         insurance: payload.insurance,
         status: payload.status,
+        title: payload.title,
+        prod_id: payload.prod_id,
       },
     ]);
 

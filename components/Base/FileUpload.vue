@@ -114,7 +114,7 @@ const handleChange = () => {
 
 <style scoped>
 .input {
-  @apply flex h-20 w-full flex-col items-center justify-center rounded-3xl border-[2px] border-dashed bg-gray-100 p-3;
+  @apply flex h-20 w-full cursor-pointer flex-col items-center justify-center rounded-3xl border-[2px] border-dashed border-gray-500 bg-gray-200 p-3 hover:bg-gray-300;
 }
 
 .input-error {

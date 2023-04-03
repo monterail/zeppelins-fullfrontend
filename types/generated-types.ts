@@ -99,7 +99,9 @@ export interface Database {
           duration: number | null;
           id: number;
           insurance: string | null;
+          prod_id: string | null;
           status: string | null;
+          title: string | null;
           user_id: string | null;
         };
         Insert: {
@@ -108,7 +110,9 @@ export interface Database {
           duration?: number | null;
           id?: number;
           insurance?: string | null;
+          prod_id?: string | null;
           status?: string | null;
+          title?: string | null;
           user_id?: string | null;
         };
         Update: {
@@ -117,7 +121,9 @@ export interface Database {
           duration?: number | null;
           id?: number;
           insurance?: string | null;
+          prod_id?: string | null;
           status?: string | null;
+          title?: string | null;
           user_id?: string | null;
         };
       };

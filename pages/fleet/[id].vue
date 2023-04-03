@@ -71,7 +71,7 @@ const { data: userProfile } = useUserProfile();
 
 const handleBook = () => {
   if (userProfile.value) {
-    navigateTo('/checkout');
+    navigateTo(`/checkout/${zeppelin.value?.id}`);
   } else {
     showAuthModal();
   }

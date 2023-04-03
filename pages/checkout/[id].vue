@@ -7,7 +7,10 @@
       @update:insurance="handleInsurance"
       @update:license="handleLicense"
     />
-    <CheckoutSummary :order="formData" />
+    <CheckoutSummary
+      :product="selectedProduct"
+      :order="formData"
+    />
     <div class="flex justify-between">
       <BaseButton
         arrow="left"
@@ -40,24 +43,26 @@ const hasLicense = computed(() => {
   return currentLicense || null;
 });
 
+const { data: selectedProduct } = useProductById(useRoute().params.id);
+
 const formData: Order = reactive({
-  userId: userProfile.value?.id || null,
-  date: null,
-  days: 1,
+  user_id: userProfile.value?.id || null,
+  date: new Date().toLocaleDateString() || null,
+  duration: 1,
   license: null,
   insurance: null,
 });
 
 const handleDate = (e: string) => (formData.date = e);
-const handleDays = (e: number) => (formData.days = e);
+const handleDays = (e: number) => (formData.duration = e);
 const handleInsurance = (e: RadioOption) => (formData.insurance = e);
 const handleLicense = (e: File) => (formData.license = e);
 
 const formValid = computed(() => {
   return !!(
-    formData.userId &&
+    formData.user_id &&
     formData.date &&
-    formData.days &&
+    formData.duration &&
     (hasLicense || formData.license) &&
     formData.insurance
   );
@@ -67,15 +72,17 @@ const handleSubmit = async () => {
   if (formValid.value) {
     const orderData = {
       ...formData,
+      prod_id: selectedProduct.value?.id,
       insurance: formData.insurance?.id,
       status: 'pending',
+      title: selectedProduct.value?.name,
     };
+    // console.log(orderData);
     if (formData.license?.name)
       await updateLicense({
         profileName: userProfile.value?.id,
         file: formData.license,
       });
-
     await insertReservation(orderData);
     if (reservationSuccess) return navigateTo('/confirmation');
   } else {

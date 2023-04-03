@@ -36,7 +36,7 @@
         <p class="font-bold">$0</p>
       </li>
       <li class="flex w-full justify-between border-t border-gray-300 py-4">
-        <p>{{ order.days }} days</p>
+        <p>{{ order.duration }} days</p>
         <p class="font-bold">${{ reservationCost }}</p>
       </li>
       <li class="flex w-full justify-between border-t border-t-gray-200 py-4">
@@ -49,18 +49,16 @@
 
 <script setup lang="ts">
 import { Order } from '~/types/order';
+import { FullProduct } from '~/types/products';
 
 const props = defineProps<{
   order: Order;
+  product: FullProduct | null | undefined;
 }>();
 
-const { data: product } = useProductById(
-  'cad189fe-7137-49da-984d-8eb8ac76deea',
-);
-
 const reservationCost = computed(() => {
-  return props.order.days && product.value && product.value.price
-    ? props.order.days * +product.value.price
+  return props.order.duration && props.product && props.product.price
+    ? props.order.duration * +props.product.price
     : 0;
 });
 

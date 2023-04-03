@@ -1,10 +1,10 @@
-import type { RadioOption } from '~/types/radio-options';
 import { Database } from '~/types/generated-types';
+import type { RadioOption } from '~/types/radio-options';
 
 export interface Order {
-  userId: string | null;
+  user_id: string | null;
   date: string | null;
-  days: number | null;
+  duration: number | null;
   insurance: RadioOption | null;
   license: File | null;
 }
