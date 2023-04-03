@@ -34,9 +34,9 @@
           class="block"
         >
           <BaseButton
-            variant="text"
             :to="link.href"
-            class="!text-base hover:font-bold"
+            class="hover:font-bold"
+            variant="text"
           >
             {{ link.name }}
           </BaseButton>

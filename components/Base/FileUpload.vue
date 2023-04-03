@@ -2,8 +2,7 @@
   <div>
     <label
       :accept="accept"
-      class="flex h-20 w-full cursor-pointer flex-col items-center justify-center rounded-3xl border-[2px] border-dashed border-gray-500 bg-gray-200 p-3 hover:bg-gray-300"
-      :class="{ '!bg-gray-300': isUploadDraggedOver }"
+      :class="inputClasses"
       @dragstart.prevent="handleDragStart"
       @dragenter.prevent="isUploadDraggedOver = true"
       @dragleave.prevent="isUploadDraggedOver = false"
@@ -16,6 +15,12 @@
         class="text-center text-sm font-bold"
       >
         Yes, drop here!
+      </div>
+      <div
+        v-else-if="isError"
+        class="text-center text-sm"
+      >
+        Incorrect file type provided.
       </div>
       <div
         v-else-if="!selectedFile"
@@ -45,7 +50,7 @@
 </template>
 
 <script setup lang="ts">
-withDefaults(
+const props = withDefaults(
   defineProps<{
     accept?: string;
     disabled?: boolean;
@@ -59,8 +64,31 @@ withDefaults(
 const emit = defineEmits(['update:file']);
 
 const fileInput = ref();
+const isError = ref(false);
 const selectedFile = ref<File | undefined>();
 const isUploadDraggedOver = ref(false);
+
+const inputClasses = computed(() => {
+  return [
+    'input',
+    { 'input-ondragover': isUploadDraggedOver.value },
+    { 'input-error': isError.value },
+  ];
+});
+
+const validateFileType = (loadFiles: FileList): File | undefined => {
+  const acceptedList = props.accept.split(',');
+  const loadFile = loadFiles[0];
+  if (
+    props.accept === '.*' ||
+    acceptedList.some((i) => loadFile.name.includes(i))
+  ) {
+    isError.value = false;
+    return loadFile;
+  } else {
+    isError.value = true;
+  }
+};
 
 const handleDragStart = (event: DragEvent) => {
   isUploadDraggedOver.value = true;
@@ -69,7 +97,7 @@ const handleDragStart = (event: DragEvent) => {
 
 const handleDrop = (event: DragEvent) => {
   if (event.dataTransfer) {
-    selectedFile.value = event.dataTransfer.files[0];
+    selectedFile.value = validateFileType(event.dataTransfer.files);
     emit('update:file', selectedFile.value);
     isUploadDraggedOver.value = false;
   }
@@ -77,9 +105,23 @@ const handleDrop = (event: DragEvent) => {
 
 const handleChange = () => {
   if (fileInput.value.files) {
-    selectedFile.value = fileInput.value.files[0];
+    selectedFile.value = validateFileType(fileInput.value.files);
     emit('update:file', selectedFile.value);
     isUploadDraggedOver.value = false;
   }
 };
 </script>
+
+<style scoped>
+.input {
+  @apply flex h-20 w-full flex-col items-center justify-center rounded-3xl border-[2px] border-dashed bg-gray-100 p-3;
+}
+
+.input-error {
+  @apply bg-red-100 border-red-500 text-red-500;
+}
+
+.input-ondragover {
+  @apply !bg-gray-300;
+}
+</style>
