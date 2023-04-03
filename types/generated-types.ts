@@ -92,6 +92,41 @@ export interface Database {
           profile_name?: string | null;
         };
       };
+      reservations: {
+        Row: {
+          created_at: string | null;
+          date: string | null;
+          duration: number | null;
+          id: number;
+          insurance: string | null;
+          prod_id: string | null;
+          status: string | null;
+          title: string | null;
+          user_id: string | null;
+        };
+        Insert: {
+          created_at?: string | null;
+          date?: string | null;
+          duration?: number | null;
+          id?: number;
+          insurance?: string | null;
+          prod_id?: string | null;
+          status?: string | null;
+          title?: string | null;
+          user_id?: string | null;
+        };
+        Update: {
+          created_at?: string | null;
+          date?: string | null;
+          duration?: number | null;
+          id?: number;
+          insurance?: string | null;
+          prod_id?: string | null;
+          status?: string | null;
+          title?: string | null;
+          user_id?: string | null;
+        };
+      };
     };
     Views: {
       [_ in never]: never;

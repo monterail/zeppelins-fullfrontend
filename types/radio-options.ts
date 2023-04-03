@@ -1,5 +1,5 @@
 export interface RadioOption {
-  id: number;
+  id: string;
   title: string;
   description: string;
   detail?: string;
