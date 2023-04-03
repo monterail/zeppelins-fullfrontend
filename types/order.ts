@@ -1,4 +1,5 @@
 import type { RadioOption } from '~/types/radio-options';
+import { Database } from '~/types/generated-types';
 
 export interface Order {
   userId: string | null;
@@ -7,6 +8,9 @@ export interface Order {
   insurance: RadioOption | null;
   license: File | null;
 }
+
+export type PostingOrder =
+  Database['public']['Tables']['reservations']['Insert'];
 
 export interface ProfileOrder {
   id: string;

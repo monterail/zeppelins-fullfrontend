@@ -65,14 +65,17 @@ const formValid = computed(() => {
 
 const handleSubmit = async () => {
   if (formValid.value) {
-    const orderData = { ...formData, insurance: formData.insurance?.id };
-    // TODO: handle license upload / change
+    const orderData = {
+      ...formData,
+      insurance: formData.insurance?.id,
+      status: 'pending',
+    };
     if (formData.license?.name)
       await updateLicense({
         profileName: userProfile.value?.id,
         file: formData.license,
       });
-    // TODO: handle reservation upload
+
     await insertReservation(orderData);
     if (reservationSuccess) return navigateTo('/confirmation');
   } else {
