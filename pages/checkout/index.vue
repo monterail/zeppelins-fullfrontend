@@ -31,6 +31,8 @@
 import { Order } from '~/types/order';
 import { RadioOption } from '~/types/radio-options';
 
+const router = useRouter();
+
 const formData: Order = reactive({
   date: null,
   days: 1,
@@ -54,8 +56,11 @@ const formValid = computed(() => {
 
 const handleSubmit = (e: Event) => {
   e.preventDefault();
-  formValid.value
-    ? console.warn('order', formData)
-    : console.error('Please fill in the form correctly');
+  if (formValid.value) {
+    console.warn('order', formData);
+    router.push({ path: '/confirmation' });
+  } else {
+    console.error('Please fill in the form correctly');
+  }
 };
 </script>
